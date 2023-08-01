@@ -1,0 +1,25 @@
+@import './../../../../../assets/css/helpers/variable.scss';
+
+.row {
+  display: flex;
+  width: 100%;
+
+  &__name {
+    width: 50%;
+  }
+
+  &__value {
+    width: 50%;
+  }
+}
+
+.column {
+  background: $light-gray;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 1px;
+}

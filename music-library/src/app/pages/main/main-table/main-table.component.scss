@@ -1,0 +1,30 @@
+@import './../../../../assets/css/helpers/variable.scss';
+
+.table {
+  padding-right: 30px;
+  padding-left: 30px;
+
+  &__header {
+    display: flex;
+    color: $text-white;
+  }
+}
+
+.row {
+  background: $gray;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 1px;
+}
+
+.header__name {
+  width: 50%;
+}
+
+.header__value {
+  width: 50%;
+}

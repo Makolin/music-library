@@ -1,0 +1,16 @@
+<div class="table">
+  <!-- Заголовки для основной таблицы-->
+  <div class="table__header">
+    <div class="header__name row">
+      <div class="name__text">Наименование параметра</div>
+    </div>
+    <div class="header__value row">
+      <div class="value__text">Количество</div>
+    </div>
+  </div>
+
+  <!-- Данные для основной таблицы-->
+  <div *ngFor="let parameter of mainParameters">
+    <app-table-row [parameter]="parameter"></app-table-row>
+  </div>
+</div>

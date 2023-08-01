@@ -1,0 +1,18 @@
+.content {
+  display: flex;
+}
+
+.group {
+  width: 200px;
+  height: 50px;
+  border: 2px solid black;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  flex-direction: column;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 18px;
+}

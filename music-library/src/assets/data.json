@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "name": "Linkin Park",
+    "genre": "Alternative",
+    "albums": [
+      {
+        "id": 1,
+        "name": "Hybrid Theory",
+        "year": "2003"
+      },
+      {
+        "id": 2,
+        "name": "Meteora",
+        "year": "2003"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Nightwish",
+    "genre": "Metal",
+    "albums":[]
+  }
+]

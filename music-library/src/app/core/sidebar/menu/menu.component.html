@@ -1,0 +1,13 @@
+<div class="main">
+  <div class="menu">
+    <div
+        *ngFor="let menuItem of allMenuItems"
+        class="menu__item"
+        [class.menu__item-click]="this.menuService.currentMenuItem == menuItem"
+        (click)="this.menuService.changeMenuItem(menuItem)">
+      <div class="item__name">
+        {{MenuLabel.get(menuItem)}}
+      </div>
+    </div>
+  </div>
+</div>

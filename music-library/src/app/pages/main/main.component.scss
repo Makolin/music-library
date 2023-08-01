@@ -1,0 +1,13 @@
+.main {
+  margin: 0 50 px;
+  width: calc(100vw - 390px);
+
+  &__title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  &__table {
+    padding-top: 50px;
+  }
+}

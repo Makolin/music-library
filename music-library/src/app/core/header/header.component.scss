@@ -1,0 +1,16 @@
+@import './../../../assets/css/helpers/variable.scss';
+
+.main {
+  background: $gray;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__title {
+    text-align: center;
+    font-size: 30px;
+    color: $text-white;
+  }
+}
