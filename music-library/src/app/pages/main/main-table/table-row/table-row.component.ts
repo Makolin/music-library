@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
-import { Parameter } from 'src/app/models/parameter.model';
+import { Parameter } from '../../../../models/parameter.model';
+
 
 /**
  * Компонент для вывода строки параметра

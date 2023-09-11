@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Russian Indie"
+  },
+  {
+    "id": 2,
+    "name": "Russian Rock"
+  },
+  {
+    "id": 3,
+    "name": "Alternative"
+  },
+  {
+    "id": 4,
+    "name": "Metal"
+  },
+  {
+    "id": 5,
+    "name": "Metalcore"
+  },
+  {
+    "id": 6,
+    "name": "Industrial"
+  }
+]

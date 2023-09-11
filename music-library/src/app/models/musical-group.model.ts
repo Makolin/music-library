@@ -4,6 +4,12 @@ import { MusicalAlbum } from "./musical-album.model";
  * Класс для хранения информации о музыкальных группах
  */
 export class MusicalGroup {
+  /** Количество альбомов */
+  public countAlbums: number = 0;
+
+  /** Количество треков */
+  public countTracks: number = 0;
+
   /**
    * Конструктор создания музыкальной группы
    * @param id идентификатор
@@ -14,7 +20,12 @@ export class MusicalGroup {
   public constructor(
     public id: number,
     public name: string,
-    public genre: string,
+    public genreId: number,
     public albums: MusicalAlbum[]
-  ) { }
+  ) {
+    this.countAlbums = albums.length;
+    albums.forEach(album => {
+      this.countTracks += album.tracks.length;
+    });
+  }
 }

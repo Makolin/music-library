@@ -1,5 +1,15 @@
 <div class="main">
   <div class="main__title">
-     Музыкальная библиотека
+    Музыкальная библиотека
   </div>
+
+  <!--Ссылка для скачивания правок-->
+  <a
+      class="main__download"
+      title="Скачать данные в формате JSON"
+      [href]="this.dataRequestService.downloadJsonHref"
+      download="musical_groups.json"
+      (click)="this.createLink()">
+    <div class="download__image"></div>
+  </a>
  </div>

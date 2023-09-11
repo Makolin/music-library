@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-
-import { DataActionsService } from './services/data-actions.service';
+import { Component, HostListener } from '@angular/core';
 
 /**
  * Основной компонент приложения
@@ -11,9 +9,9 @@ import { DataActionsService } from './services/data-actions.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public constructor(
-    dataActionsService: DataActionsService
-  ) {
-    dataActionsService.readDataMusicalGroups();
-  }
+  /**
+   * TODO: При перезагрузке страницы, уточнять насчет выхода
+   */
+  @HostListener('window:beforeunload')
+  public checkSaveData() {}
 }

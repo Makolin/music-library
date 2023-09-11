@@ -1,9 +1,6 @@
-@import './../../../../assets/css/helpers/variable.scss';
+@import './../../../../assets/css/helpers/variables.scss';
 
 .table {
-  padding-right: 30px;
-  padding-left: 30px;
-
   &__header {
     display: flex;
     color: $text-white;

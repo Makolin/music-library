@@ -1,0 +1,52 @@
+<div class="body">
+  <div class="modal">
+    <div class="modal-container">
+      <!--Заголовок модального окна-->
+      <div class="modal__header">
+        Создание группы
+      </div>
+
+      <!--Кнопка закрытия модального окна-->
+      <div
+          class="modal__close"
+          (click)="this.closeWindow()">
+        <div class="modal__close-image"></div>
+      </div>
+
+      <!--Форма для заполнения-->
+      <form
+          class="form"
+          autocomplete="off"
+          [formGroup]="this.createForm"
+          (ngSubmit)="this.createMusicalGroup()">
+        <!--Наименование группы-->
+        <div class="form-group">
+          <label>Наименование группы</label>
+          <input
+            class="form-control"
+            name="groupName"
+            formControlName="groupName" />
+        </div>
+
+        <!--Наименование группы-->
+        <div class="form-group">
+          <label>Жанр группы</label>
+          <input
+            class="form-control"
+            name="groupGenre"
+            formControlName="groupGenre" />
+        </div>
+
+        <!--Кнопка отправить-->
+        <div class="form-button">
+          <button
+              class="button"
+              [disabled]="this.createForm.invalid">
+            Сохранить
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

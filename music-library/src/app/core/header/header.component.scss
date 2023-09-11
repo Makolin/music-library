@@ -1,16 +1,29 @@
-@import './../../../assets/css/helpers/variable.scss';
+@import './../../../assets/css/helpers/variables.scss';
 
 .main {
-  background: $gray;
-  height: 80px;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 80px;
+  background: $gray;
 
   &__title {
     text-align: center;
-    font-size: 30px;
     color: $text-white;
+    font-size: 30px;
   }
+
+  &__download {
+    position: fixed;
+    left: 88vw;
+  }
+}
+
+.download__image {
+  width: 40px;
+  height: 40px;
+  border: 2px solid $light-gray;
+  border-radius: 10px;
+  background: url('./../../../assets/image/download.svg') center no-repeat;
 }

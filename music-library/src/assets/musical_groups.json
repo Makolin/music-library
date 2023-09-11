@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Linkin Park",
+    "genreId": 3,
+    "albums": [
+      {
+        "id": 1,
+        "name": "Hybrid Theory",
+        "year": "2003",
+        "tracks": [
+          {
+            "id": 1,
+            "name": "Papercut",
+            "isFavorite": true
+          },
+          {
+            "id": 2,
+            "name": "In the End",
+            "isFavorite": true
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Meteora",
+        "year": "2003",
+        "tracks": []
+      }
+    ],
+    "countAlbums": 2,
+    "countTracks": 2
+  },
+  {
+    "id": 2,
+    "name": "Nightwish",
+    "genreId": 4,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  },
+  {
+    "id": 3,
+    "name": "Architects",
+    "genreId": 5,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  },
+  {
+    "id": 4,
+    "name": "Wildways",
+    "genreId": 5,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  },
+  {
+    "id": 5,
+    "name": "Oomph!",
+    "genreId": 6,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  },
+  {
+    "id": 6,
+    "name": "Кис-кис",
+    "genreId": 1,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  },
+  {
+    "id": 6,
+    "name": "Анимация",
+    "genreId": 2,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  }
+]

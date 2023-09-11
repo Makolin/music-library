@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { Menu, MenuLabel } from 'src/app/enums/menu.enum';
-import { MenuService } from 'src/app/services/menu.service';
+import { Menu, MenuLabel } from './../../../enums/menu.enum';
+import { MenuService } from './../../../services/menu.service';
 
 /**
  * Компонент для работы с меню

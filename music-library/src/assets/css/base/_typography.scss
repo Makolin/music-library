@@ -1,0 +1,17 @@
+@use './../helpers/variables.scss';
+
+@font-face {
+  font-family: variables.$font-name;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: local('PT Serif'), url('./../../fonts/pt-serif-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: variables.$font-name;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local('PT Serif'), url('./../../fonts/pt-serif-bold.woff2') format('woff2');
+}
