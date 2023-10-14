@@ -8,16 +8,12 @@
 
   <!--Вывод текущих групп-->
   <div *ngFor="let musicalGroup of this.dataRequestService.allMusicalGroups">
-    <div class="group">
+    <div
+        class="group"
+        (click)="this.openModalCreateGroup()">
       <div class="group__name">{{musicalGroup.name}}</div>
       <div class="group__albums">Альбомы: {{musicalGroup.albums.length}}</div>
       <div class="group__tgracks">Треки: {{musicalGroup.albums.length}}</div>
     </div>
   </div>
 </div>
-
-<!--Модальное окно создания группы-->
-<div *ngIf="this.modalStateService.allModalsState.get(ModalType.CreateMusicalGroup)">
-  <app-group-create></app-group-create>
-</div>
-

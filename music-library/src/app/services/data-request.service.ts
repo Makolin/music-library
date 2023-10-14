@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
-import { MusicalGroup } from '../models/musical-group.model';
 import { MusicalGenre } from '../models/musical-genre.model';
+import { MusicalGroup } from '../models/musical-group.model';
 
 /**
  * Сервис для работы с информацией

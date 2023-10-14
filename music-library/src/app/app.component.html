@@ -13,3 +13,8 @@
 
   <app-footer></app-footer>
 </div>
+
+<!--Модальное окно создания группы-->
+<div *ngIf="this.modalStateService.allModalsState.get(ModalType.CreateMusicalGroup)">
+  <app-group-edit></app-group-edit>
+</div>

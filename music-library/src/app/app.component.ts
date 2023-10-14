@@ -1,5 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 
+import { ModalStateService } from './services/modal-state.service';
+import { ModalType } from './enums/modal-type.enum';
+
 /**
  * Основной компонент приложения
  */
@@ -13,5 +16,10 @@ export class AppComponent {
    * TODO: При перезагрузке страницы, уточнять насчет выхода
    */
   @HostListener('window:beforeunload')
-  public checkSaveData() {}
+  public checkSaveData() { };
+
+  /** Алиас типов модальных окон */
+  public ModalType = ModalType;
+
+  public constructor(public modalStateService: ModalStateService) { }
 }

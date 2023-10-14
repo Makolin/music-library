@@ -2,19 +2,19 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ModalType } from '../../../enums/modal-type.enum';
-import { ModalStateService } from '../../../services/modal-state.service';
 import { MusicalGroup } from '../../../models/musical-group.model';
 import { DataRequestService } from '../../../services/data-request.service';
+import { ModalStateService } from '../../../services/modal-state.service';
 
 /**
- * Модально окно создания группы
+ * Модально окно создания/изменения группы
  */
 @Component({
-  selector: 'app-group-create',
-  templateUrl: './group-create.component.html',
-  styleUrls: ['./group-create.component.scss']
+  selector: 'app-group-edit',
+  templateUrl: './group-edit.component.html',
+  styleUrls: ['./group-edit.component.scss']
 })
-export class GroupCreateComponent {
+export class GroupEditComponent {
   /** Форма для заполнения */
   public createForm: FormGroup;
 

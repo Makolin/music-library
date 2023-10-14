@@ -13,9 +13,6 @@ import { ModalStateService } from './../../services/modal-state.service';
   styleUrls: ['./musical-groups.component.scss']
 })
 export class MusicalGroupsComponent {
-  /** Алиас типов модальных окон */
-  public ModalType = ModalType;
-
   public constructor(
     public dataRequestService: DataRequestService,
     public modalStateService: ModalStateService
