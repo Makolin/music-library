@@ -3,7 +3,7 @@
     <div class="modal-container">
       <!--Заголовок модального окна-->
       <div class="modal__header">
-        Создание группы
+        {{this.titleModal}}
       </div>
 
       <!--Кнопка закрытия модального окна-->
@@ -15,38 +15,39 @@
 
       <!--Форма для заполнения-->
       <form
-          class="form"
-          autocomplete="off"
-          [formGroup]="this.createForm"
-          (ngSubmit)="this.createMusicalGroup()">
-        <!--Наименование группы-->
-        <div class="form-group">
-          <label>Наименование группы</label>
-          <input
-            class="form-control"
-            name="groupName"
-            formControlName="groupName" />
-        </div>
+        class="form"
+        autocomplete="off"
+        [formGroup]="this.createForm"
+        (ngSubmit)="this.editMusicalGroup()">
 
-        <!--Наименование группы-->
-        <div class="form-group">
-          <label>Жанр группы</label>
+        <!--Наименование групп-->
+        <mat-form-field>
+          <mat-label>Наименование группы</mat-label>
           <input
-            class="form-control"
-            name="groupGenre"
-            formControlName="groupGenre" />
-        </div>
+            matInput
+            formControlName="groupName">
+        </mat-form-field>
 
-        <!--Кнопка отправить-->
-        <div class="form-button">
-          <button
-              class="button"
-              [disabled]="this.createForm.invalid">
-            Сохранить
-          </button>
-        </div>
+        <!--Выбор жанра музыки-->
+        <mat-form-field>
+          <mat-label>Жанр группы</mat-label>
+          <mat-select
+              formControlName="groupGenre">
+            <mat-option
+                *ngFor="let genre of this.dataRequestService.allMusicalGenres"
+                [value]="genre.id">
+              {{genre.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!--Кнопка сохранить-->
+        <button
+            mat-raised-button
+            (click)="this.editMusicalGroup()">
+          Сохранить
+        </button>
       </form>
     </div>
   </div>
 </div>
-

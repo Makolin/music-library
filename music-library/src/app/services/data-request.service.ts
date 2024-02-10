@@ -21,6 +21,15 @@ export class DataRequestService {
   /** Ссылка для скачивания файла */
   public downloadJsonHref!: SafeUrl;
 
+  /** Загрузка всех данных */
+  public isLoadAllData: boolean = false;
+
+  /** Загрузка музыкальных групп */
+  private isLoadMusicalGroups: boolean = false;
+
+  /** Загрузка музыкальных жанров */
+  private isLoadMusicalGenres: boolean = false;
+
   /** Ссылка для чтения музыкальных групп */
   private readonly URL_MUSICAL_GROUPS: string = 'assets/musical_groups.json';
 
@@ -49,8 +58,9 @@ export class DataRequestService {
         console.log(error);
       },
       complete: () => {
-        console.log(this.allMusicalGroups);
-       }
+        this.isLoadMusicalGroups = true;
+        this.checkAllLoad();
+      }
     });
   }
 
@@ -68,8 +78,9 @@ export class DataRequestService {
         console.log(error);
       },
       complete: () => {
-        console.log(this.allMusicalGenres);
-       }
+        this.isLoadMusicalGenres = true;
+        this.checkAllLoad();
+      }
     });
   }
 
@@ -80,5 +91,12 @@ export class DataRequestService {
     console.log(this.allMusicalGroups);
     const convertData = JSON.stringify(this.allMusicalGroups);
     this.downloadJsonHref = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(convertData));
+  }
+
+  /**
+   * Проверка загрузки всех данных
+   */
+  private checkAllLoad(): void {
+    this.isLoadAllData = this.isLoadMusicalGenres && this.isLoadMusicalGroups;
   }
 }

@@ -1,10 +1,5 @@
 @import './../../../../assets/css/helpers/variables.scss';
 
-input {
-  width: 300px;
-  font-size: 20px;
-}
-
 /* Затемнение для модального окна */
 .body {
   position: fixed;
@@ -22,7 +17,7 @@ input {
 /* Основные размеры модального окна */
 .modal {
   position: relative;
-  width: 600px;
+  width: 400px;
   background-color: white;
 
   &-container {
@@ -62,25 +57,12 @@ input {
 
 .form {
   margin-top: 30px;
-
-  &-group {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    font-size: 20px;
-    line-height: 20px;
-  }
-
-  &-button {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 58px;
-  }
+  display:flex;
+  flex-direction: column;
 }
 
-.button {
-  width: 150px;
-  height: 40px;
-  font-size: 18px;
+.form__button {
+  text-align: end;
+  width: 100%;
+  margin-top: 20px;
 }

@@ -1,4 +1,4 @@
-@import './../../../assets/css/helpers/variables.scss';
+@import "./../../../assets/css/helpers/variables.scss";
 
 .content {
   display: grid;
@@ -12,13 +12,14 @@
   text-align: center;
   font-size: 24px;
 }
+
 .group {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   width: 200px;
-  height: 90px;
+  height: 100px;
   margin: 10px;
   cursor: pointer;
   color: $text-white;
@@ -30,7 +31,8 @@
 
   &__name {
     font-size: 20px;
-    line-height: 33px;
+    margin-bottom: 10px;
+    text-align: center;
   }
 }
 
@@ -41,6 +43,6 @@
   cursor: pointer;
   border: 2px solid $dark-gray;
   border-radius: 10px;
-  background: url('./../../../assets/image/plus.svg') center no-repeat;
+  background: url("./../../../assets/image/plus.svg") center no-repeat;
   background-color: $gray;
 }

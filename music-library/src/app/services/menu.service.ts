@@ -42,15 +42,19 @@ export class MenuService {
       case Menu.Main:
         this.router.navigate(['/main']);
         break;
+
       case Menu.MusicalGroups:
         this.router.navigate(['/musical-groups']);
         break;
+
       case Menu.MusicalAlbums:
         this.router.navigate(['/musical-albums']);
         break;
+
       case Menu.MusicalTracks:
         this.router.navigate(['/musical-tracks']);
         break;
+
       default:
         this.router.navigate(['/main']);
         break;

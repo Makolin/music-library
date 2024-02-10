@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ModalType } from '../enums/modal-type.enum';
+import { MusicalGroup } from '../models/musical-group.model';
 
 /**
  * Сервис состояний модальных окон
@@ -9,6 +10,9 @@ import { ModalType } from '../enums/modal-type.enum';
   providedIn: 'root'
 })
 export class ModalStateService {
+  /** Выбранная музыкальная группа */
+  public selectedMusicalGroup: MusicalGroup | null = null;
+
   /** Список модальных окон и статусов открытия/закрытия */
   public allModalsState = new Map<ModalType, boolean>([
     [ModalType.CreateMusicalGroup, false]
