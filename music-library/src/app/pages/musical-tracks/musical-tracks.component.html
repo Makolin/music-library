@@ -1,1 +1,19 @@
-<div class="title">Список любимых треков</div>
+<div class="title">
+    Список треков
+</div>
+
+<div class="content">
+  <!--Вывод текущих групп-->
+  <div *ngFor="let musicalTrack of this.allMusicalTracks">
+    <div class="track">
+      <div class="track__number">{{musicalTrack.serialNumber}}.</div>
+      <div class="track__name">{{musicalTrack.name}}</div>
+      <div class="track__name-album">{{musicalTrack.albumName}}</div>
+      <div class="track__name-group">{{musicalTrack.groupName}}</div>
+      <mat-checkbox
+        [checked]="musicalTrack.isFavorite"
+        (change)="this.setStatusFavoriteTrack(musicalTrack, !musicalTrack.isFavorite)">
+      </mat-checkbox>
+    </div>
+  </div>
+</div>

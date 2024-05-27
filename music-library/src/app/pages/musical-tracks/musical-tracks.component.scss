@@ -1,5 +1,39 @@
+@import "./../../../assets/css/helpers/variables.scss";
+
 .title {
   padding-bottom: 50px;
   text-align: center;
   font-size: 24px;
+}
+
+.content {
+  display: grid;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.track {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 18px;
+  font-weight: 600;
+  color: $dark-gray;
+
+  &__number {
+    width: 25px;
+  }
+
+  &__name {
+    width: 170px;
+  }
+
+  &__name-album {
+    width: 170px;
+  }
+
+  &__name-group {
+    width: 170px;
+  }
 }

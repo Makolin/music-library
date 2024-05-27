@@ -1,5 +1,46 @@
+@import "./../../../assets/css/helpers/variables.scss";
+
 .title {
   padding-bottom: 50px;
   text-align: center;
   font-size: 24px;
+}
+
+.content {
+  display: grid;
+  justify-content: space-between;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, 220px);
+}
+
+.album {
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+  background-color: $gray;
+  border: 2px solid $dark-gray;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.album-add {
+  background-image: url("./../../../assets/image/plus.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.album-edit {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: $text-white;
+  font-size: 18px;
+  font-weight: 600;
+
+  &__name {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
 }

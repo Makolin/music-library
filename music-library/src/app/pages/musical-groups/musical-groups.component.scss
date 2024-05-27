@@ -14,18 +14,27 @@
 }
 
 .group {
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+  background-color: $gray;
+  border: 2px solid $dark-gray;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.group-add {
+  background-image: url("./../../../assets/image/plus.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.group-edit {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  width: 200px;
-  height: 100px;
-  margin: 10px;
-  cursor: pointer;
   color: $text-white;
-  border: 2px solid $dark-gray;
-  border-radius: 10px;
-  background-color: $gray;
   font-size: 18px;
   font-weight: 600;
 
@@ -34,15 +43,4 @@
     margin-bottom: 10px;
     text-align: center;
   }
-}
-
-.group-add {
-  width: 200px;
-  height: 90px;
-  margin: 10px;
-  cursor: pointer;
-  border: 2px solid $dark-gray;
-  border-radius: 10px;
-  background: url("./../../../assets/image/plus.svg") center no-repeat;
-  background-color: $gray;
 }

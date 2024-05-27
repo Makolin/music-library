@@ -1,1 +1,20 @@
-<div class="title">Список любимых альбомов</div>
+<div class="title">
+  Список альбомов
+</div>
+
+<div class="content">
+  <!--Добавление нового альбома-->
+  <div
+    class="album album-add">
+  </div>
+
+  <!--Вывод текущих групп-->
+  <div *ngFor="let musicalAlbum of this.allMusicalAlbums">
+    <div class="album album-edit">
+      <div class="album-edit__name">{{musicalAlbum.name}}</div>
+      <div class="album-edit__group">{{musicalAlbum.groupName}}</div>
+      <div class="album-edit__year">Год выхода: {{musicalAlbum.year}}</div>
+      <div class="album-edit__tracks">Количество треков: {{musicalAlbum.tracks.length}}</div>
+    </div>
+  </div>
+</div>
