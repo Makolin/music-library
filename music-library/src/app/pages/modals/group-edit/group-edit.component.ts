@@ -1,17 +1,23 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatOption, MatSelect } from '@angular/material/select';
 
 import { ModalType } from '../../../enums/modal-type.enum';
 import { MusicalGroup } from '../../../models/musical-group.model';
-import { DataRequestService } from '../../../services/data-request.service';
+import { DataFilterService } from '../../../services/data-filter.service';
+import { DataHandlingService } from '../../../services/data-handling.service';
 import { ModalStateService } from '../../../services/modal-state.service';
-import { DataFilterService } from 'src/app/services/data-filter.service';
 
 /**
  * Модальное окно создания/изменения группы
  */
 @Component({
   selector: 'app-group-edit',
+  standalone: true,
+  imports: [MatFormField, MatLabel, MatSelect, MatOption, ReactiveFormsModule, NgFor, MatInputModule],
   templateUrl: './group-edit.component.html',
   styleUrls: ['./group-edit.component.scss']
 })
@@ -21,19 +27,19 @@ export class GroupEditComponent {
 
   /** Получение заголовка модального окна */
   public get titleModal(): string {
-    return this.modalStateService.selectedMusicalGroup == null
+    return this._modalStateService.selectedMusicalGroup == null
       ? 'Создание группы'
       : 'Редактирование группы';
   }
 
   public constructor(
-    public dataRequestService: DataRequestService,
-    private modalStateService: ModalStateService,
-    private dataFilterService: DataFilterService
+    public dataHandlingService: DataHandlingService,
+    private _modalStateService: ModalStateService,
+    private _dataFilterService: DataFilterService
   ) {
     this.createForm = new FormGroup({
-      "groupName": new FormControl(this.modalStateService.selectedMusicalGroup?.name ?? '', Validators.required),
-      "groupGenre": new FormControl(this.modalStateService.selectedMusicalGroup?.genreId ?? '', Validators.required)
+      'groupName': new FormControl(this._modalStateService.selectedMusicalGroup?.name ?? '', Validators.required),
+      'groupGenre': new FormControl(this._modalStateService.selectedMusicalGroup?.genreId ?? '', Validators.required)
     });
   }
 
@@ -41,24 +47,26 @@ export class GroupEditComponent {
    * Закрытие модального окна
    */
   public closeWindow(): void {
-    this.modalStateService.setStateModal(ModalType.CreateMusicalGroup, false);
-    this.dataFilterService.sortMusicGroups();
+    this._modalStateService.setStateModal(ModalType.MusicalGroup, false);
+    this._dataFilterService.sortMusicGroups();
   }
 
   /**
    * Создание или редактирование музыкальной группы
    */
   public editMusicalGroup(): void {
-    let lastIndex = this.dataRequestService.allMusicalGroups.at(-1)?.id;
+    let lastIndex = this.dataHandlingService.allMusicalGroups.reduce((first, second) => first.id > second.id ? first : second).id;
     if (lastIndex == null) {
       return;
     }
 
-    if (this.modalStateService.selectedMusicalGroup == null) {
-      this.dataRequestService.allMusicalGroups.push(new MusicalGroup(lastIndex++, this.createForm.value.groupName, this.createForm.value.groupGenre, []));
+    if (this._modalStateService.selectedMusicalGroup == null) {
+      this.dataHandlingService.allMusicalGroups.push(
+        new MusicalGroup(++lastIndex, this.createForm.value.groupName, this.createForm.value.groupGenre, [])
+      );
     } else {
-      this.modalStateService.selectedMusicalGroup.name = this.createForm.value.groupName;
-      this.modalStateService.selectedMusicalGroup.genreId = this.createForm.value.groupGenre;
+      this._modalStateService.selectedMusicalGroup.name = this.createForm.value.groupName;
+      this._modalStateService.selectedMusicalGroup.genreId = this.createForm.value.groupGenre;
     }
 
     this.closeWindow();

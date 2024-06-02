@@ -15,11 +15,10 @@
 
       <!--Форма для заполнения-->
       <form
-        class="form"
-        autocomplete="off"
-        [formGroup]="this.createForm"
-        (ngSubmit)="this.editMusicalGroup()">
-
+          class="form"
+          autocomplete="off"
+          [formGroup]="this.createForm"
+          (ngSubmit)="this.editMusicalGroup()">
         <!--Наименование групп-->
         <mat-form-field>
           <mat-label>Наименование группы</mat-label>
@@ -34,7 +33,7 @@
           <mat-select
               formControlName="groupGenre">
             <mat-option
-                *ngFor="let genre of this.dataRequestService.allMusicalGenres"
+                *ngFor="let genre of this.dataHandlingService.allMusicalGenres"
                 [value]="genre.id">
               {{genre.name}}
             </mat-option>

@@ -1,13 +1,18 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatTooltip } from '@angular/material/tooltip';
 
-import { MusicalTrack } from 'src/app/models/musical-track.model';
-import { DataRequestService } from 'src/app/services/data-request.service';
+import { MusicalTrack } from '../../models/musical-track.model';
+import { DataHandlingService } from '../../services/data-handling.service';
 
 /**
  * Компонент для вывода информации о треках
  */
 @Component({
   selector: 'app-musical-tracks',
+  standalone: true,
+  imports: [MatCheckbox, NgFor, MatTooltip],
   templateUrl: './musical-tracks.component.html',
   styleUrls: ['./musical-tracks.component.scss']
 })
@@ -16,7 +21,7 @@ export class MusicalTracksComponent {
   public allMusicalTracks: MusicalTrack[] = [];
 
   public constructor(
-    private dataRequestService: DataRequestService
+    private _dataHandlingService: DataHandlingService
   ) {
     this.setAllTracks();
   }
@@ -25,7 +30,7 @@ export class MusicalTracksComponent {
    * Заполняем список всех альбомов
    */
   private setAllTracks(): void {
-    this.dataRequestService.allMusicalGroups.forEach(group => {
+    this._dataHandlingService.allMusicalGroups.forEach(group => {
       group.albums.forEach(album => {
         album.tracks.forEach(track => {
           track.groupName = group.name;

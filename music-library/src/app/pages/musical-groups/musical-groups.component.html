@@ -6,17 +6,17 @@
   <!--Добавление новой группы-->
   <div
     class="group group-add"
-    (click)="this.openModalCreateGroup(null)">
+    (click)="this.openModalEditGroup(null)">
   </div>
 
   <!--Вывод текущих групп-->
-  <div *ngFor="let musicalGroup of this.dataRequestService.allMusicalGroups">
+  <div *ngFor="let musicalGroup of this.dataHandlingService.allMusicalGroups">
     <div
         class="group group-edit"
-        (click)="this.openModalCreateGroup(musicalGroup)">
+        (click)="this.openModalEditGroup(musicalGroup)">
       <div class="group-edit__name">{{musicalGroup.name}}</div>
       <div class="group-edit__albums">Альбомы: {{musicalGroup.albums.length}}</div>
-      <div class="group-edit__tracks">Треки: {{musicalGroup.albums.length}}</div>
+      <div class="group-edit__tracks">Треки: {{musicalGroup | countTracks}}</div>
     </div>
   </div>
 </div>

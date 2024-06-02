@@ -11,7 +11,9 @@
       <div class="track__name-album">{{musicalTrack.albumName}}</div>
       <div class="track__name-group">{{musicalTrack.groupName}}</div>
       <mat-checkbox
+        matTooltip="Любимое"
         [checked]="musicalTrack.isFavorite"
+        [color]="'primary'"
         (change)="this.setStatusFavoriteTrack(musicalTrack, !musicalTrack.isFavorite)">
       </mat-checkbox>
     </div>

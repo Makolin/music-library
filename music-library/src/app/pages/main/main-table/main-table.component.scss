@@ -1,9 +1,9 @@
-@import './../../../../assets/css/helpers/variables.scss';
+@import './../../../../assets/css/helpers/variables';
 
 .table {
   &__header {
     display: flex;
-    color: $text-white;
+    color: $white;
   }
 }
 

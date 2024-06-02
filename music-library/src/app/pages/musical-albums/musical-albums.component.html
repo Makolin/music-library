@@ -5,12 +5,15 @@
 <div class="content">
   <!--Добавление нового альбома-->
   <div
-    class="album album-add">
+    class="album album-add"
+    (click)="this.openModalEditAlbum(null)">
   </div>
 
   <!--Вывод текущих групп-->
-  <div *ngFor="let musicalAlbum of this.allMusicalAlbums">
-    <div class="album album-edit">
+  <div *ngFor="let musicalAlbum of this.dataHandlingService.allMusicalAlbums">
+    <div
+        class="album album-edit"
+        (click)="this.openModalEditAlbum(musicalAlbum)">
       <div class="album-edit__name">{{musicalAlbum.name}}</div>
       <div class="album-edit__group">{{musicalAlbum.groupName}}</div>
       <div class="album-edit__year">Год выхода: {{musicalAlbum.year}}</div>

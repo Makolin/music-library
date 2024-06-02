@@ -1,102 +1,166 @@
 [
-    {
-        "id": 6,
-        "name": "Anacondaz",
-        "genreId": 7,
-        "albums": [],
-        "countAlbums": 0,
-        "countTracks": 0
-    },
-    {
-        "id": 3,
-        "name": "Architects",
-        "genreId": 5,
-        "albums": [],
-        "countAlbums": 0,
-        "countTracks": 0
-    },
-    {
-        "id": 6,
-        "name": "Bullet for My Valentine",
-        "genreId": 5,
-        "albums": [],
-        "countAlbums": 0,
-        "countTracks": 0
-    },
-    {
-        "id": 1,
-        "name": "Linkin Park",
-        "genreId": 3,
-        "albums": [
-            {
-                "id": 1,
-                "groupId": 1,
-                "name": "Hybrid Theory",
-                "year": "2003",
-                "tracks": [
-                    {
-                        "id": 1,
-                        "serialNumber": 1,
-                        "name": "Papercut",
-                        "isFavorite": true
-                    },
-                    {
-                        "id": 2,
-                        "serialNumber": 8,
-                        "name": "In the End",
-                        "isFavorite": true
-                    }
-                ]
-            },
-            {
-                "id": 2,
-                "groupId": 1,
-                "name": "Meteora",
-                "year": "2003",
-                "tracks": []
-            }
-        ],
-        "countAlbums": 2,
-        "countTracks": 2
-    },
-    {
-        "id": 2,
-        "name": "Nightwish",
-        "genreId": 4,
-        "albums": [],
-        "countAlbums": 0,
-        "countTracks": 0
-    },
-    {
-        "id": 5,
-        "name": "Oomph!",
-        "genreId": 6,
-        "albums": [],
-        "countAlbums": 0,
-        "countTracks": 0
-    },
-    {
+  {
+    "id": 7,
+    "name": "Anacondaz",
+    "genreId": 7,
+    "albums": [
+      {
         "id": 4,
-        "name": "Wildways",
-        "genreId": 5,
-        "albums": [],
-        "countAlbums": 0,
-        "countTracks": 0
-    },
-    {
+        "groupId": 7,
+        "name": "Смачные ништяки",
+        "year": 2009,
+        "isListened": false,
+        "tracks": [],
+        "groupName": ""
+      }
+    ],
+    "countAlbums": 1,
+    "countTracks": 0
+  },
+  {
+    "id": 8,
+    "name": "Architects",
+    "genreId": 5,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  },
+  {
+    "id": 9,
+    "name": "Bullet for My Valentine",
+    "genreId": 5,
+    "albums": [
+      {
+        "id": 5,
+        "groupId": 9,
+        "name": "Venom",
+        "year": 2015,
+        "isListened": false,
+        "tracks": [],
+        "groupName": ""
+      }
+    ],
+    "countAlbums": 1,
+    "countTracks": 0
+  },
+  {
+    "id": 1,
+    "name": "Linkin Park",
+    "genreId": 3,
+    "albums": [
+      {
+        "id": 1,
+        "groupId": 1,
+        "name": "Hybrid Theory",
+        "year": "2003",
+        "isListened": false,
+        "tracks": [
+          {
+            "id": 1,
+            "serialNumber": 1,
+            "name": "Papercut",
+            "isFavorite": true,
+            "groupName": "",
+            "albumName": ""
+          },
+          {
+            "id": 2,
+            "serialNumber": 8,
+            "name": "In the End",
+            "isFavorite": true,
+            "groupName": "",
+            "albumName": ""
+          }
+        ],
+        "groupName": ""
+      },
+      {
+        "id": 2,
+        "groupId": 1,
+        "name": "Meteora",
+        "year": "2003",
+        "isListened": false,
+        "tracks": [],
+        "groupName": ""
+      }
+    ],
+    "countAlbums": 2,
+    "countTracks": 2
+  },
+  {
+    "id": 10,
+    "name": "My Darkest Days",
+    "genreId": 3,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  },
+  {
+    "id": 2,
+    "name": "Nightwish",
+    "genreId": 4,
+    "albums": [
+      {
+        "id": 3,
+        "groupId": 2,
+        "name": "Eva",
+        "year": 2007,
+        "isListened": false,
+        "tracks": [],
+        "groupName": ""
+      }
+    ],
+    "countAlbums": 1,
+    "countTracks": 0
+  },
+  {
+    "id": 3,
+    "name": "Oomph!",
+    "genreId": 6,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  },
+  {
+    "id": 4,
+    "name": "Wildways",
+    "genreId": 5,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  },
+  {
+    "id": 5,
+    "name": "АнимациЯ",
+    "genreId": 2,
+    "albums": [
+      {
         "id": 6,
-        "name": "Анимация",
-        "genreId": 2,
-        "albums": [],
-        "countAlbums": 0,
-        "countTracks": 0
-    },
-    {
-        "id": 6,
-        "name": "Кис-кис",
-        "genreId": 1,
-        "albums": [],
-        "countAlbums": 0,
-        "countTracks": 0
-    }
+        "groupId": 5,
+        "name": "Кругом враги",
+        "year": 2016,
+        "isListened": false,
+        "tracks": [],
+        "groupName": ""
+      }
+    ],
+    "countAlbums": 1,
+    "countTracks": 0
+  },
+  {
+    "id": 6,
+    "name": "Кис-кис",
+    "genreId": 1,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  },
+  {
+    "id": 11,
+    "name": "Мёртвые Осы",
+    "genreId": 3,
+    "albums": [],
+    "countAlbums": 0,
+    "countTracks": 0
+  }
 ]

@@ -14,7 +14,17 @@
   <app-footer></app-footer>
 </div>
 
-<!--Модальное окно создания группы-->
-<div *ngIf="this.modalStateService.allModalsState.get(ModalType.CreateMusicalGroup)">
+<!--Модальное окно группы-->
+<div *ngIf="this.modalStateService.allModalsState.get(this.enumModalType.MusicalGroup)">
   <app-group-edit></app-group-edit>
+</div>
+
+<!--Модальное окно альбома-->
+<div *ngIf="this.modalStateService.allModalsState.get(this.enumModalType.MusicalAlbum)">
+  <app-album-edit></app-album-edit>
+</div>
+
+<!--Модальное окно жанра-->
+<div *ngIf="this.modalStateService.allModalsState.get(this.enumModalType.MusicalGenre)">
+  <app-genre-edit></app-genre-edit>
 </div>

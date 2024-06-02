@@ -1,0 +1,39 @@
+<div class="body">
+  <div class="modal">
+    <div class="modal-container">
+      <!--Заголовок модального окна-->
+      <div class="modal__header">
+        {{this.titleModal}}
+      </div>
+
+      <!--Кнопка закрытия модального окна-->
+      <div
+          class="modal__close"
+          (click)="this.closeWindow()">
+        <div class="modal__close-image"></div>
+      </div>
+
+      <!--Форма для заполнения-->
+      <form
+          class="form"
+          autocomplete="off"
+          [formGroup]="this.createForm"
+          (ngSubmit)="this.editMusicalGroup()">
+        <!--Наименование жанра-->
+        <mat-form-field>
+          <mat-label>Наименование жанра</mat-label>
+          <input
+            matInput
+            formControlName="groupGenre">
+        </mat-form-field>
+
+        <!--Кнопка сохранить-->
+        <button
+            mat-raised-button
+            (click)="this.editMusicalGroup()">
+          Сохранить
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-@import "./../../../assets/css/helpers/variables.scss";
+@import "./../../../assets/css/helpers/variables";
 
 .title {
   padding-bottom: 50px;
@@ -34,7 +34,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  color: $text-white;
+  color: $white;
   font-size: 18px;
   font-weight: 600;
 

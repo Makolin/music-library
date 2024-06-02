@@ -1,0 +1,15 @@
+<div class="genre">
+  <div
+    matTooltip="Редактирование"
+    class="genre__edit"
+    (click)="this.sendSelectedGenre()">
+  </div>
+
+  <div
+    matTooltip="Удаление"
+    class="genre__delete">
+  </div>
+
+  <div class="genre__name">{{this.musicalGenre.name}}</div>
+  <div class="genre__count-group">{{this.countGroups}} исполнителей</div>
+</div>

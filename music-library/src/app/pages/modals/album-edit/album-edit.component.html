@@ -1,0 +1,63 @@
+<div class="body">
+  <div class="modal">
+    <div class="modal-container">
+      <!--Заголовок модального окна-->
+      <div class="modal__header">
+        {{this.titleModal}}
+      </div>
+
+      <!--Кнопка закрытия модального окна-->
+      <div
+          class="modal__close"
+          (click)="this.closeWindow()">
+        <div class="modal__close-image"></div>
+      </div>
+
+      <!--Форма для заполнения-->
+      <form
+          class="form"
+          autocomplete="off"
+          [formGroup]="this.createForm"
+          (ngSubmit)="this.editMusicalAlbum()">
+        <!--Наименование альбома-->
+        <mat-form-field>
+          <mat-label>Наименование альбома</mat-label>
+          <input
+            matInput
+            formControlName="albumName">
+        </mat-form-field>
+
+        <!--Наименование исполнителя-->
+        <mat-form-field>
+          <mat-label>Наименование исполнителя</mat-label>
+          <mat-select
+              formControlName="albumGroupName">
+            <mat-option
+                *ngFor="let group of this.dataHandlingService.allMusicalGroups"
+                [value]="group.id">
+              {{group.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!--Выбор года альбома-->
+        <mat-form-field>
+          <mat-label>Год выхода альбома</mat-label>
+          <input
+            matInput
+            type="number"
+            maxlength="4"
+            minlength="4"
+            formControlName="albumYear">
+        </mat-form-field>
+
+        <!--Кнопка сохранить-->
+        <button
+            mat-raised-button
+            (click)="this.editMusicalAlbum()">
+          Сохранить
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

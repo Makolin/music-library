@@ -1,0 +1,29 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss"
+  ],
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "selector-class-pattern": null,
+    "color-function-notation": null,
+    "hue-degree-notation": "number",
+    "alpha-value-notation": "number",
+    "no-empty-source": null,
+    "no-descending-specificity": null,
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": [
+          "ng-deep"
+        ]
+      }
+    ],
+    "color-no-hex": true,
+    "color-named": "never",
+    "declaration-no-important": true
+  }
+}

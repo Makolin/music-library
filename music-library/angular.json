@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "music-library:build:production"
+              "buildTarget": "music-library:build:production"
             },
             "development": {
-              "browserTarget": "music-library:build:development"
+              "buildTarget": "music-library:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "music-library:build"
+            "buildTarget": "music-library:build"
           }
         },
         "test": {
@@ -97,11 +97,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "48c806e6-4c67-49fc-ba7a-a68ec80d3758"
+    "analytics": "48c806e6-4c67-49fc-ba7a-a68ec80d3758",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

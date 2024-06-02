@@ -1,0 +1,18 @@
+@import "./../../../assets/css/helpers/variables";
+
+.title {
+  padding-bottom: 50px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.content {
+  display: grid;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-add{
+  width: 200px;
+  background-color: $gray;
+}

@@ -1,0 +1,201 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:jsdoc/recommended"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/component-max-inline-declarations": "error",
+        "@typescript-eslint/no-empty-function": [
+          "error",
+          {
+            "allow": [
+              "constructors",
+              "arrowFunctions"
+            ]
+          }
+        ],
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/explicit-function-return-type": "error",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": [
+              "memberLike"
+            ],
+            "format": [
+              "camelCase"
+            ],
+            "leadingUnderscore": "forbid"
+          },
+          {
+            "selector": [
+              "memberLike"
+            ],
+            "modifiers": [
+              "private"
+            ],
+            "format": [
+              "camelCase"
+            ],
+            "leadingUnderscore": "require"
+          },
+          {
+            "selector": [
+              "classMethod",
+              "accessor"
+            ],
+            "format": [
+              "camelCase"
+            ],
+            "leadingUnderscore": "forbid"
+          },
+          {
+            "selector": [
+              "classProperty"
+            ],
+            "modifiers": [
+              "readonly"
+            ],
+            "format": [
+              "UPPER_CASE"
+            ],
+            "leadingUnderscore": "forbid"
+          },
+          {
+            "selector": [
+              "enumMember"
+            ],
+            "format": [
+              "PascalCase"
+            ],
+            "leadingUnderscore": "forbid"
+          }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit"
+          }
+        ],
+        "multiline-comment-style": [
+          "error",
+          "starred-block"
+        ],
+        "semi": [
+          "error",
+          "always"
+        ],
+        "quotes": [
+          "error",
+          "single"
+        ],
+        "for-direction": "error",
+        "no-cond-assign": "error",
+        "no-fallthrough": "error",
+        "no-sparse-arrays": "error",
+        "no-undefined": "error",
+        "no-array-constructor": "error",
+        "no-unneeded-ternary": "error",
+        "brace-style": "error",
+        "spaced-comment": [
+          "error",
+          "always",
+          {
+            "line": {
+              "markers": [
+                "/"
+              ]
+            },
+            "block": {
+              "markers": [
+                "!"
+              ],
+              "exceptions": [
+                "*"
+              ],
+              "balanced": true
+            }
+          }
+        ],
+        "no-multiple-empty-lines": [
+          "error",
+          {
+            "max": 1,
+            "maxEOF": 0,
+            "maxBOF": 0
+          }
+        ],
+        "lines-between-class-members": [
+          "error",
+          "always"
+        ],
+        "jsdoc/require-returns-type": [
+          "off"
+        ],
+        "jsdoc/require-param-type": [
+          "off"
+        ],
+        "jsdoc/no-multi-asterisks": [
+          "off"
+        ],
+        "jsdoc/require-returns": [
+          "warn",
+          {
+            "checkGetters": false
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended",
+        "plugin:@angular-eslint/template/accessibility"
+      ],
+      "rules": {
+        "@angular-eslint/template/click-events-have-key-events": [
+          "off"
+        ],
+        "@angular-eslint/template/interactive-supports-focus": [
+          "off"
+        ],
+        "@angular-eslint/template/no-duplicate-attributes": [
+          "error"
+        ],
+        "@angular-eslint/template/attributes-order": [
+          "error"
+        ]
+      }
+    }
+  ]
+}

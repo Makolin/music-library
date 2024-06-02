@@ -1,5 +1,5 @@
-import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { MatTooltip } from '@angular/material/tooltip';
 
 import { DataRequestService } from '../../services/data-request.service';
 
@@ -8,13 +8,20 @@ import { DataRequestService } from '../../services/data-request.service';
  */
 @Component({
   selector: 'app-header',
+  standalone: true,
+  imports: [MatTooltip],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  public constructor(public dataRequestService: DataRequestService, private router: Router) { }
+  public constructor(
+    public dataRequestService: DataRequestService
+  ) { }
 
-  public createLink() {
+  /**
+   * Создание ссылки
+   */
+  public createLink(): void {
     this.dataRequestService.createLinkForDownload();
   }
 }

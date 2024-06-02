@@ -1,13 +1,17 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 
+import { DataHandlingService } from '../../../services/data-handling.service';
 import { Parameter } from './../../../models/parameter.model';
-import { DataRequestService } from '../../../services/data-request.service';
+import { TableRowComponent } from './table-row/table-row.component';
 
 /**
  * Компонент для вывода таблицы
  */
 @Component({
   selector: 'app-main-table',
+  standalone: true,
+  imports: [TableRowComponent, NgFor],
   templateUrl: './main-table.component.html',
   styleUrls: ['./main-table.component.scss']
 })
@@ -16,15 +20,17 @@ export class MainTableComponent {
   public mainParameters: Parameter[] = [];
 
   /** Количество музыкальных групп */
-  private countGroups: number = 0;
+  private _countGroups: number = 0;
 
   /** Количество альбомов */
-  private countAlbums: number = 0;
+  private _countAlbums: number = 0;
 
   /** Количество треков */
-  private countTracks: number = 0;
+  private _countTracks: number = 0;
 
-  public constructor(private dataRequestService: DataRequestService) {
+  public constructor(
+    private _dataHandlingService: DataHandlingService
+  ) {
     this.calculateCounts();
     this.addParameters();
   }
@@ -34,9 +40,9 @@ export class MainTableComponent {
    */
   public addParameters(): void {
     if (this.mainParameters.length == 0) {
-      this.mainParameters.push(new Parameter('Количество исполнителей', this.countGroups.toString()));
-      this.mainParameters.push(new Parameter('Количество альбомов', this.countAlbums.toString()));
-      this.mainParameters.push(new Parameter('Количество треков', this.countTracks.toString()));
+      this.mainParameters.push(new Parameter('Количество исполнителей', this._countGroups.toString()));
+      this.mainParameters.push(new Parameter('Количество альбомов', this._countAlbums.toString()));
+      this.mainParameters.push(new Parameter('Количество треков', this._countTracks.toString()));
     }
   }
 
@@ -44,15 +50,15 @@ export class MainTableComponent {
    * Подсчет количества
    */
   private calculateCounts(): void {
-    this.countGroups = 0;
-    this.countAlbums = 0;
-    this.countTracks = 0;
+    this._countGroups = 0;
+    this._countAlbums = 0;
+    this._countTracks = 0;
 
     // Заполняем данными
-    this.countGroups = this.dataRequestService.allMusicalGroups.length;
-    this.dataRequestService.allMusicalGroups.forEach(group => {
-      this.countAlbums += group.countAlbums;
-      this.countTracks += group.countTracks;
+    this._countGroups = this._dataHandlingService.allMusicalGroups.length;
+    this._dataHandlingService.allMusicalGroups.forEach(group => {
+      this._countAlbums += group.countAlbums;
+      this._countTracks += group.countTracks;
     });
   }
 }

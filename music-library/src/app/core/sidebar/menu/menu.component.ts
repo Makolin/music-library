@@ -1,3 +1,4 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 
 import { Menu, MenuLabel } from './../../../enums/menu.enum';
@@ -8,18 +9,29 @@ import { MenuService } from './../../../services/menu.service';
  */
 @Component({
   selector: 'app-menu',
+  standalone: true,
+  imports: [NgFor],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
   /** Алиас меню */
-  public Menu = Menu;
+  public enumMenu = Menu;
 
   /** Алиас меню и названия строки */
-  public MenuLabel = MenuLabel;
+  public enumMenuLabel = MenuLabel;
 
   /** Общий список меню для вывода */
-  public allMenuItems = [Menu.Main, Menu.MusicalGroups, Menu.MusicalAlbums, Menu.MusicalTracks];
+  public allMenuItems = [
+    Menu.Main,
+    Menu.MusicalGroups,
+    Menu.MusicalAlbums,
+    Menu.MusicalTracks,
+    Menu.MusicalGenres,
+    Menu.MusicalConcerts
+  ];
 
-  public constructor(public menuService: MenuService) { }
+  public constructor(
+    public menuService: MenuService
+  ) { }
 }

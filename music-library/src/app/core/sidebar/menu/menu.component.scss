@@ -1,4 +1,4 @@
-@import './../../../../assets/css/helpers/variables.scss';
+@import './../../../../assets/css/helpers/variables';
 
 .menu {
   &__item {
@@ -8,7 +8,7 @@
     width: 250px;
     height: 50px;
     background: $gray;
-    color: $text-white;
+    color: $white;
     border-radius: 17px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 8px 8px rgba(0, 0, 0, 0.22);
     justify-content: center;

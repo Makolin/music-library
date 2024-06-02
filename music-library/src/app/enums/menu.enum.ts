@@ -3,24 +3,32 @@
  */
 export enum Menu {
   /** Основная страница */
-  Main = 0,
+  Main = 'main',
 
   /** Музыкальная группа */
-  MusicalGroups = 1,
+  MusicalGroups = 'musical-groups',
 
   /** Список альбомов */
-  MusicalAlbums = 2,
+  MusicalAlbums = 'musical-albums',
 
   /** Список треков */
-  MusicalTracks = 3
+  MusicalTracks = 'musical-tracks',
+
+  /** Музыкальные жанры */
+  MusicalGenres = 'musical-genres',
+
+  /** Музыкальные концерты */
+  MusicalConcerts = 'musical-concerts'
 }
 
 /**
  * Сопоставление объекта перечисления и наименования вкладки
  */
-export const MenuLabel = new Map<number, string>([
+export const MenuLabel = new Map<string, string>([
   [Menu.Main, 'Основная страница'],
   [Menu.MusicalGroups, 'Исполнители'],
   [Menu.MusicalAlbums, 'Альбомы'],
-  [Menu.MusicalTracks, 'Треки']
+  [Menu.MusicalTracks, 'Треки'],
+  [Menu.MusicalGenres, 'Жанры'],
+  [Menu.MusicalConcerts, 'Концерты']
 ]);

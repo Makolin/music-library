@@ -1,0 +1,39 @@
+@import "./../../../../assets/css/helpers/variables";
+
+.genre {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 18px;
+  font-weight: 600;
+  color: $dark-gray;
+
+  &__name {
+    width: 170px;
+  }
+
+  &__count-group {
+    width: 150px;
+  }
+
+  &__edit {
+    margin: 0 10px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: $gray;
+    mask-size: 20px 20px;
+    mask-image: url('./../../../../assets/image/pen.svg');
+  }
+
+  &__delete{
+    margin: 0 10px;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: $gray;
+    mask-size: 20px 20px;
+    mask-image: url('./../../../../assets/image/trash.svg');
+  }
+}

@@ -1,0 +1,20 @@
+<div class="title">
+  Список жанров
+</div>
+
+<div class="content">
+  <button
+      mat-flat-button
+      class="button-add"
+      (click)="this.openModalEditGenre(null)">
+    Добавить новый жанр
+  </button>
+
+  <!--Вывод текущих жанров-->
+  <div *ngFor="let musicalGenre of this.dataHandlingService.allMusicalGenres">
+    <app-genres-row
+      [musicalGenre]="musicalGenre"
+      (selectedGenre)="this.openModalEditGenre($event)">
+    </app-genres-row>
+  </div>
+</div>

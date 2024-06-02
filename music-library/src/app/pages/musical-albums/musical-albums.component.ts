@@ -1,35 +1,37 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 
-import { MusicalAlbum } from 'src/app/models/musical-album.model';
-import { DataRequestService } from 'src/app/services/data-request.service';
+import { ModalType } from '../../enums/modal-type.enum';
+import { MusicalAlbum } from '../../models/musical-album.model';
+import { DataHandlingService } from '../../services/data-handling.service';
+import { ModalStateService } from '../../services/modal-state.service';
+import { DataFilterService } from '../../services/data-filter.service';
 
 /**
  * Компонент для вывода информации об альбомах
  */
 @Component({
   selector: 'app-musical-albums',
+  standalone: true,
+  imports: [NgFor],
   templateUrl: './musical-albums.component.html',
   styleUrls: ['./musical-albums.component.scss']
 })
 export class MusicalAlbumsComponent {
-  /** Список всех музыкальных альбомов */
-  public allMusicalAlbums: MusicalAlbum[] = [];
-
   public constructor(
-    private dataRequestService: DataRequestService
+    public dataHandlingService: DataHandlingService,
+    private _modalStateService: ModalStateService,
+    private _dataFilterService: DataFilterService
   ) {
-    this.setAllAlbums();
+    this.dataHandlingService.setAllAlbums(this._dataFilterService);
   }
 
   /**
-   * Заполняем список всех альбомов
+   * Открытие модального окна для редактирования альбома
+   * @param musicalAlbum музыкальный альбом
    */
-  private setAllAlbums(): void {
-    this.dataRequestService.allMusicalGroups.forEach(group => {
-      group.albums.forEach(album => {
-        album.groupName = group.name;
-        this.allMusicalAlbums.push(album);
-      });
-    });
+  public openModalEditAlbum(musicalAlbum: MusicalAlbum | null): void {
+    this._modalStateService.selectedMusicalAlbum = musicalAlbum;
+    this._modalStateService.setStateModal(ModalType.MusicalAlbum, true);
   }
 }

@@ -1,4 +1,4 @@
-@import './../../../assets/css/helpers/variables.scss';
+@import './../../../assets/css/helpers/variables';
 
 .main {
   display: flex;
@@ -10,12 +10,15 @@
 
   &__title {
     text-align: center;
-    color: $text-white;
+    color: $white;
     font-size: 30px;
   }
 
   &__download {
+    cursor: pointer;
     position: fixed;
+    background: $gray;
+    border: 0;
     left: 88vw;
   }
 }

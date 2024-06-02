@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { MusicalGenre } from '../models/musical-genre.model';
 import { MusicalGroup } from '../models/musical-group.model';
-import { DataRequestService } from './data-request.service';
+import { DataHandlingService } from './data-handling.service';
+import { MusicalAlbum } from '../models/musical-album.model';
 
 /**
  * Сервис для фильтрации и сортировки данных
@@ -12,14 +13,14 @@ import { DataRequestService } from './data-request.service';
 })
 export class DataFilterService {
   public constructor(
-    private dataRequestService: DataRequestService
+    private _dataHandlingService: DataHandlingService
   ) { }
 
   /**
    * Сортировка музыкальных групп по алфавиту
    */
   public sortMusicGroups(): void {
-    this.dataRequestService.allMusicalGroups.sort((a, b) => {
+    this._dataHandlingService.allMusicalGroups.sort((a, b) => {
       return this.sortByName(a, b);
     });
   }
@@ -28,7 +29,16 @@ export class DataFilterService {
    * Сортировка музыкальных жанров
    */
   public sortMusicGenres(): void {
-    this.dataRequestService.allMusicalGenres.sort((a, b) => {
+    this._dataHandlingService.allMusicalGenres.sort((a, b) => {
+      return this.sortByName(a, b);
+    });
+  }
+
+  /**
+   * Сортировка музыкальных альбомов
+   */
+  public sortMusicAlbums(): void {
+    this._dataHandlingService.allMusicalAlbums.sort((a, b) => {
       return this.sortByName(a, b);
     });
   }
@@ -39,13 +49,10 @@ export class DataFilterService {
    * @param second второй объект
    * @returns результат сравнения
    */
-  private sortByName(first: MusicalGenre | MusicalGroup, second: MusicalGenre | MusicalGroup): number {
-    if (first.name < second.name) {
-      return -1;
-    } else if (first.name > second.name) {
-      return 1;
-    } else {
-      return 0;
-    }
+  private sortByName(
+    first: MusicalGenre | MusicalGroup | MusicalAlbum,
+    second: MusicalGenre | MusicalGroup | MusicalAlbum
+  ): number {
+    return (first.name < second.name) ? -1 : (first.name > second.name) ? 1 : 0;
   }
 }

@@ -11,19 +11,20 @@ import { Menu } from '../enums/menu.enum';
 })
 export class MenuService {
   /** Пункт меню по умолчанию */
-  private readonly defaultMenuItem = Menu.Main;
+  private readonly DEFAULT_MENU_ITEM = Menu.Main;
 
   /** Текущий выбранный пункт меню */
-  public currentMenuItem = this.defaultMenuItem;
+  public currentMenuItem = this.DEFAULT_MENU_ITEM;
 
   public constructor(
-    private router: Router
+    private _router: Router
   ) {
     this.setRouteApp();
   }
 
   /**
    * Переключатель для пунктов меню
+   * @param newItemMenu новый пункт меню
    */
   public changeMenuItem(newItemMenu: Menu): void {
     if (this.currentMenuItem == newItemMenu) {
@@ -40,23 +41,31 @@ export class MenuService {
   private setRouteApp(): void {
     switch (this.currentMenuItem) {
       case Menu.Main:
-        this.router.navigate(['/main']);
+        this._router.navigate([`/${Menu.Main}`]);
         break;
 
       case Menu.MusicalGroups:
-        this.router.navigate(['/musical-groups']);
+        this._router.navigate([`/${Menu.MusicalGroups}`]);
         break;
 
       case Menu.MusicalAlbums:
-        this.router.navigate(['/musical-albums']);
+        this._router.navigate([`/${Menu.MusicalAlbums}`]);
         break;
 
       case Menu.MusicalTracks:
-        this.router.navigate(['/musical-tracks']);
+        this._router.navigate([`/${Menu.MusicalTracks}`]);
+        break;
+
+      case Menu.MusicalGenres:
+        this._router.navigate([`/${Menu.MusicalGenres}`]);
+        break;
+
+      case Menu.MusicalConcerts:
+        this._router.navigate([`/${Menu.MusicalConcerts}`]);
         break;
 
       default:
-        this.router.navigate(['/main']);
+        this._router.navigate([`/${Menu.Main}`]);
         break;
     }
   }

@@ -1,4 +1,4 @@
-import { MusicalTrack } from "./musical-track.model";
+import { MusicalTrack } from './musical-track.model';
 
 /**
  * Класс для хранения информации о музыкальных альбомах
@@ -13,6 +13,7 @@ export class MusicalAlbum {
    * @param groupId идентификатор группы
    * @param name наименование
    * @param year год выпуска
+   * @param isListened прослушан ли
    * @param tracks список треков альбома
    */
   public constructor(
@@ -20,6 +21,7 @@ export class MusicalAlbum {
     public groupId: number,
     public name: string,
     public year: number,
+    public isListened: boolean,
     public tracks: MusicalTrack[]
   ) { }
 }
