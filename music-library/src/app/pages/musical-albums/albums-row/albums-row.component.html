@@ -1,0 +1,18 @@
+<div class="album">
+  <div
+    matTooltip="Редактирование"
+    class="album__edit"
+    (click)="this.sendSelectedAlbum()">
+  </div>
+
+  <div
+    matTooltip="Удаление"
+    class="album__delete"
+    (click)="this.openDialogDeleteAlbum()">
+  </div>
+
+  <div class="album__value-name">{{this.musicalAlbum.name}}</div>
+  <div class="album__value-group-name">{{this.groupName}}</div>
+  <div class="album__value-year">{{this.musicalAlbum.year}}</div>
+  <div class="album__value-count-tracks">{{this.musicalAlbum.tracks.length}}</div>
+</div>

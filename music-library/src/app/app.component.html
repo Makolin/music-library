@@ -1,4 +1,6 @@
-<div class="main">
+<div
+    *ngIf="this.dataRequestService.isLoadAllData"
+    class="main">
   <app-header></app-header>
 
   <!--Основной контент-->
@@ -27,4 +29,14 @@
 <!--Модальное окно жанра-->
 <div *ngIf="this.modalStateService.allModalsState.get(this.enumModalType.MusicalGenre)">
   <app-genre-edit></app-genre-edit>
+</div>
+
+<!--Модальное окно трека-->
+<div *ngIf="this.modalStateService.allModalsState.get(this.enumModalType.MusicalTrack)">
+  <app-track-edit></app-track-edit>
+</div>
+
+<!--Модальное окно концерта-->
+<div *ngIf="this.modalStateService.allModalsState.get(this.enumModalType.MusicalConcert)">
+  <app-concert-edit></app-concert-edit>
 </div>

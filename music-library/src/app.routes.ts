@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { Menu } from './app/enums/menu.enum';
+import { Menu } from './app/models/enums/menu.enum';
 
 /**
  * Основные маршруты

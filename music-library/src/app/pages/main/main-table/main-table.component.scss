@@ -1,14 +1,16 @@
-@import './../../../../assets/css/helpers/variables';
+@use './../../../../assets/css/helpers/variables';
 
 .table {
+  border-radius: 5%;
+
   &__header {
     display: flex;
-    color: $white;
+    color: variables.$white;
   }
 }
 
 .row {
-  background: $gray;
+  background: variables.$primary-4;
   height: 40px;
   display: flex;
   align-items: center;

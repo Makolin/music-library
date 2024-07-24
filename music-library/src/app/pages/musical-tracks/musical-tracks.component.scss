@@ -1,39 +1,37 @@
-@import "./../../../assets/css/helpers/variables";
+@use './../../../assets/css/helpers/variables';
+@use './../../../assets/css/helpers/mixins';
 
-.title {
-  padding-bottom: 50px;
+.content__buttons {
+  @include mixins.function-buttons;
+}
+
+.content__header {
+  @include mixins.table-header;
+}
+
+.header__name {
+  flex: 1;
+  margin-left: 80px;
+}
+
+.header__album {
+  flex: 0.8;
+}
+
+.header__group {
+  flex: 0.8;
+}
+
+.header__favorite {
+  flex: 0.5;
   text-align: center;
-  font-size: 24px;
 }
 
-.content {
-  display: grid;
-  justify-content: space-between;
-  width: 100%;
+.content__scroll {
+  @include mixins.content-page(250px);
 }
 
-.track {
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 18px;
-  font-weight: 600;
-  color: $dark-gray;
-
-  &__number {
-    width: 25px;
-  }
-
-  &__name {
-    width: 170px;
-  }
-
-  &__name-album {
-    width: 170px;
-  }
-
-  &__name-group {
-    width: 170px;
-  }
+.scroll__row:nth-child(even) {
+  border-radius: 8px;
+  background-color: variables.$primary-2-light;
 }

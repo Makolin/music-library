@@ -1,23 +1,16 @@
 <div class="body">
   <div class="modal">
     <div class="modal-container">
-      <!--Заголовок модального окна-->
-      <div class="modal__header">
-        {{this.titleModal}}
-      </div>
-
-      <!--Кнопка закрытия модального окна-->
-      <div
-          class="modal__close"
-          (click)="this.closeWindow()">
-        <div class="modal__close-image"></div>
-      </div>
+      <app-modal-header
+        [titleModal]="this.titleModal"
+        [modalType]="this.enumModalType.MusicalGroup">
+      </app-modal-header>
 
       <!--Форма для заполнения-->
       <form
           class="form"
           autocomplete="off"
-          [formGroup]="this.createForm"
+          [formGroup]="this.form"
           (ngSubmit)="this.editMusicalGroup()">
         <!--Наименование групп-->
         <mat-form-field>
@@ -25,27 +18,53 @@
           <input
             matInput
             formControlName="groupName">
+
+          <mat-error *ngIf="this.form.get('groupName')?.errors?.['required']">
+            Обязательное для заполнения поле
+          </mat-error>
+          <!--TODO: Пока не выводится-->
+          <mat-error *ngIf="this.form.get('groupName')?.errors?.['uniqValue']"></mat-error>
         </mat-form-field>
 
         <!--Выбор жанра музыки-->
         <mat-form-field>
           <mat-label>Жанр группы</mat-label>
           <mat-select
-              formControlName="groupGenre">
+              formControlName="groupGenreId">
             <mat-option
                 *ngFor="let genre of this.dataHandlingService.allMusicalGenres"
                 [value]="genre.id">
               {{genre.name}}
             </mat-option>
           </mat-select>
+
+          <mat-error *ngIf="this.form.get('groupGenreId')?.errors?.['required']">
+            Обязательное для заполнения поле
+          </mat-error>
         </mat-form-field>
 
-        <!--Кнопка сохранить-->
-        <button
-            mat-raised-button
-            (click)="this.editMusicalGroup()">
-          Сохранить
-        </button>
+        <!--Распалась ли группа-->
+        <mat-checkbox
+            formControlName="groupIsBrokeUp">
+          Группа распалась
+        </mat-checkbox>
+
+        <!--Кнопки-->
+        <div class="form__buttons">
+          <button
+              mat-raised-button
+              class="button"
+              (click)="this.closeWindow()">
+            Отменить
+          </button>
+          <button
+              mat-raised-button
+              class="button"
+              [disabled]="this.form.invalid"
+              (click)="this.editMusicalGroup()">
+            Сохранить
+          </button>
+        </div>
       </form>
     </div>
   </div>

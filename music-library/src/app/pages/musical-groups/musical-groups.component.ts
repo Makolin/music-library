@@ -1,11 +1,13 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatButton } from '@angular/material/button';
 
+import { ModalType } from '../../models/enums/modal-type.enum';
 import { MusicalGroup } from '../../models/musical-group.model';
 import { CountTracksPipe } from '../../pipe/count-tracks.pipe';
 import { DataHandlingService } from '../../services/data-handling.service';
-import { ModalType } from './../../enums/modal-type.enum';
 import { ModalStateService } from './../../services/modal-state.service';
+import { GroupsRowComponent } from './groups-row/groups-row.component';
 
 /**
  * Компонент для вывода информации о группах
@@ -13,7 +15,7 @@ import { ModalStateService } from './../../services/modal-state.service';
 @Component({
   selector: 'app-musical-groups',
   standalone: true,
-  imports: [NgFor, CountTracksPipe],
+  imports: [NgFor, CountTracksPipe, GroupsRowComponent, MatButton],
   templateUrl: './musical-groups.component.html',
   styleUrls: ['./musical-groups.component.scss']
 })

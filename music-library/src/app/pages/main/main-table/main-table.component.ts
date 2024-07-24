@@ -39,11 +39,13 @@ export class MainTableComponent {
    * Заполнение параметров
    */
   public addParameters(): void {
-    if (this.mainParameters.length == 0) {
-      this.mainParameters.push(new Parameter('Количество исполнителей', this._countGroups.toString()));
-      this.mainParameters.push(new Parameter('Количество альбомов', this._countAlbums.toString()));
-      this.mainParameters.push(new Parameter('Количество треков', this._countTracks.toString()));
+    if (this.mainParameters.length != 0) {
+      return;
     }
+
+    this.mainParameters.push(new Parameter('Количество исполнителей', this._countGroups.toString()));
+    this.mainParameters.push(new Parameter('Количество альбомов', this._countAlbums.toString()));
+    this.mainParameters.push(new Parameter('Количество треков', this._countTracks.toString()));
   }
 
   /**
@@ -57,8 +59,10 @@ export class MainTableComponent {
     // Заполняем данными
     this._countGroups = this._dataHandlingService.allMusicalGroups.length;
     this._dataHandlingService.allMusicalGroups.forEach(group => {
-      this._countAlbums += group.countAlbums;
-      this._countTracks += group.countTracks;
+      if (group.countAlbums != null && group.countTracks != null) {
+        this._countAlbums += group.countAlbums;
+        this._countTracks += group.countTracks;
+      }
     });
   }
 }

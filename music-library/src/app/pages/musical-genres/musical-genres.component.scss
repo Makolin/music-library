@@ -1,18 +1,28 @@
-@import "./../../../assets/css/helpers/variables";
+@use './../../../assets/css/helpers/variables';
+@use './../../../assets/css/helpers/mixins';
 
-.title {
-  padding-bottom: 50px;
-  text-align: center;
-  font-size: 24px;
+.content__buttons {
+  @include mixins.function-buttons;
 }
 
-.content {
-  display: grid;
-  justify-content: space-between;
-  width: 100%;
+.content__scroll {
+  @include mixins.content-page(280px);
 }
 
-.button-add{
-  width: 200px;
-  background-color: $gray;
+.content__header {
+  @include mixins.table-header;
+}
+
+.header__name {
+  width: 250px;
+  margin-left: 80px;
+}
+
+.header__count-group {
+  width: 250px;
+}
+
+.scroll__row:nth-child(even) {
+  border-radius: 8px;
+  background-color: variables.$primary-2-light;
 }

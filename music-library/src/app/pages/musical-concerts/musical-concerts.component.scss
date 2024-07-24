@@ -1,0 +1,43 @@
+@use './../../../assets/css/helpers/variables';
+@use './../../../assets/css/helpers/mixins';
+
+.content__buttons {
+  @include mixins.function-buttons;
+}
+
+.content__scroll {
+  @include mixins.content-page(280px);
+}
+
+.content__header {
+  @include mixins.table-header;
+}
+
+.header__name {
+  flex: 1;
+  margin-left: 80px;
+}
+
+.header__tribute {
+  flex: 0.7;
+  text-align: center;
+}
+
+.header__date {
+  flex: 0.7;
+  text-align: center;
+}
+
+.header__area {
+  flex: 0.7;
+}
+
+.header__ticket {
+  flex: 0.7;
+  text-align: center;
+}
+
+.scroll__row:nth-child(even) {
+  border-radius: 8px;
+  background-color: variables.$primary-2-light;
+}

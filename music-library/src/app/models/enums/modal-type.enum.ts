@@ -3,11 +3,17 @@
  */
 export enum ModalType {
   /** Модальное окно для музыкальной группы */
-  MusicalGroup = 0,
+  MusicalGroup,
 
   /** Модальное окно для музыкального альбома */
-  MusicalAlbum = 1,
+  MusicalAlbum,
 
   /** Модальное окно для музыкального жанра */
-  MusicalGenre = 2
+  MusicalGenre,
+
+  /** Модальное окно для музыкального трека */
+  MusicalTrack,
+
+  /** Модальное окно для музыкального концерта */
+  MusicalConcert
 }

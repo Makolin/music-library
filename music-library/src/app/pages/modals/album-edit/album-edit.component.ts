@@ -1,55 +1,72 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatCheckbox } from '@angular/material/checkbox';
 import { MatOption } from '@angular/material/core';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelect } from '@angular/material/select';
 
-import { ModalType } from '../../../enums/modal-type.enum';
+import { ModalType } from '../../../models/enums/modal-type.enum';
 import { MusicalAlbum } from '../../../models/musical-album.model';
+import { validatorUniqueAlbum } from '../../../models/validator/validator-unique-album';
+import { DataFilterService } from '../../../services/data-filter.service';
 import { DataHandlingService } from '../../../services/data-handling.service';
 import { ModalStateService } from '../../../services/modal-state.service';
-import { DataFilterService } from '../../../services/data-filter.service';
+import { ModalHeaderComponent } from '../../shared/modal-header/modal-header.component';
 
 /**
- * Модальное окно для создания и редактирования музыкального альбома
+ * Модальное окно для создания/редактирования музыкального альбома
  */
 @Component({
   standalone: true,
-  imports: [MatFormField, MatLabel, ReactiveFormsModule, MatInputModule, MatOption, NgFor, MatSelect],
+  imports: [
+    MatFormField,
+    MatLabel,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatOption,
+    NgFor,
+    MatSelect,
+    ModalHeaderComponent,
+    MatCheckbox,
+    NgIf
+  ],
   selector: 'app-album-edit',
   templateUrl: './album-edit.component.html',
   styleUrls: ['./album-edit.component.scss']
 })
 export class AlbumEditComponent {
   /** Форма для заполнения */
-  public createForm: FormGroup;
+  public form: FormGroup;
 
-  /** Получение заголовка модального окна */
-  public get titleModal(): string {
-    return this._modalStateService.selectedMusicalGroup == null
-      ? 'Создание альбома'
-      : 'Редактирование альбома';
-  }
+  /** Алиас типа модального окна */
+  public enumModalType = ModalType;
+
+  /** Заголовок модального окна */
+  public titleModal: string = '';
 
   public constructor(
     public dataHandlingService: DataHandlingService,
-    private _modalStateService: ModalStateService,
+    public modalStateService: ModalStateService,
     private _dataFilterService: DataFilterService
   ) {
-    this.createForm = new FormGroup({
-      'albumName': new FormControl(this._modalStateService.selectedMusicalAlbum?.name ?? '', Validators.required),
-      'albumGroupName': new FormControl(this._modalStateService.selectedMusicalAlbum?.groupId ?? '', Validators.required),
-      'albumYear': new FormControl(this._modalStateService.selectedMusicalAlbum?.year ?? '', Validators.required)
-    });
+    this.form = new FormGroup({
+      'albumName': new FormControl(this.modalStateService.selectedMusicalAlbum?.name ?? '', Validators.required),
+      'albumGroupId': new FormControl(this.modalStateService.selectedMusicalAlbum?.groupId ?? '', Validators.required),
+      'albumYear': new FormControl(this.modalStateService.selectedMusicalAlbum?.year ?? '', Validators.required),
+      'albumIsListened': new FormControl(this.modalStateService.selectedMusicalAlbum?.isListened ?? false),
+    }, { validators: validatorUniqueAlbum(this.dataHandlingService) }
+    );
+
+    this.setTitleModalText();
   }
 
   /**
    * Закрытие модального окна
    */
   public closeWindow(): void {
-    this._modalStateService.setStateModal(ModalType.MusicalAlbum, false);
+    this.modalStateService.setStateModal(ModalType.MusicalAlbum, false);
   }
 
   /**
@@ -61,16 +78,26 @@ export class AlbumEditComponent {
       return;
     }
 
-    if (this._modalStateService.selectedMusicalAlbum == null) {
+    if (this.modalStateService.selectedMusicalAlbum == null) {
       this.addNewAlbum(lastIndex);
     } else {
-      this._modalStateService.selectedMusicalAlbum.name = this.createForm.value.albumName;
-      this._modalStateService.selectedMusicalAlbum.groupId = this.createForm.value.albumGroupName;
-      this._modalStateService.selectedMusicalAlbum.year = this.createForm.value.albumYear;
+      this.modalStateService.selectedMusicalAlbum.name = this.form.value.albumName;
+      this.modalStateService.selectedMusicalAlbum.groupId = this.form.value.albumGroupId;
+      this.modalStateService.selectedMusicalAlbum.year = this.form.value.albumYear.trim();
+      this.modalStateService.selectedMusicalAlbum.isListened = this.form.value.albumIsListened;
     }
 
     this.dataHandlingService.setAllAlbums(this._dataFilterService);
     this.closeWindow();
+  }
+
+  /**
+   * Установка текста модального окна
+   */
+  private setTitleModalText(): void {
+    this.titleModal = this.modalStateService.selectedMusicalAlbum == null
+      ? 'Создание альбома'
+      : 'Редактирование альбома';
   }
 
   /**
@@ -79,7 +106,7 @@ export class AlbumEditComponent {
    */
   private addNewAlbum(lastIndex: number): void {
     const findGroup = this.dataHandlingService.allMusicalGroups
-      .find(element => element.id == this.createForm.value.albumGroupName);
+      .find(element => element.id == this.form.value.albumGroupId);
 
     if (findGroup == null) {
       return;
@@ -88,10 +115,10 @@ export class AlbumEditComponent {
     findGroup.albums.push(
       new MusicalAlbum(
         ++lastIndex,
-        this.createForm.value.albumGroupName,
-        this.createForm.value.albumName,
-        this.createForm.value.albumYear,
-        false,
+        this.form.value.albumGroupId,
+        this.form.value.albumName.trim(),
+        this.form.value.albumYear,
+        this.form.value.albumIsListened ?? false,
         []
       )
     );

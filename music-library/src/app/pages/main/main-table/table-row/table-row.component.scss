@@ -1,4 +1,4 @@
-@import './../../../../../assets/css/helpers/variables';
+@use './../../../../../assets/css/helpers/variables';
 
 .row {
   display: flex;
@@ -14,12 +14,12 @@
 }
 
 .column {
-  background: $light-gray;
+  background: variables.$primary-2;
   height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   margin: 1px;
 }

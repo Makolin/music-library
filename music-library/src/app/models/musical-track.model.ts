@@ -3,21 +3,23 @@
  */
 export class MusicalTrack {
   /** Наименование группы */
-  public groupName: string = '';
+  public groupName?: string = '';
 
   /** Наименование альбома */
-  public albumName: string = '';
+  public albumName?: string = '';
 
   /**
-   * Конструктор создания музыкального трека
+   * Конструктор
    * @param id идентификатор
    * @param serialNumber порядковый номер
+   * @param albumId идентификатор альбома
    * @param name наименование
    * @param isFavorite любимое
    */
   public constructor(
     public id: number,
     public serialNumber: number,
+    public albumId: number,
     public name: string,
     public isFavorite: boolean
   ) { }

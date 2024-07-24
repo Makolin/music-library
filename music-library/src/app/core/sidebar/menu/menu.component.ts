@@ -1,7 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 
-import { Menu, MenuLabel } from './../../../enums/menu.enum';
+import { Menu, MenuLabel } from '../../../models/enums/menu.enum';
 import { MenuService } from './../../../services/menu.service';
 
 /**

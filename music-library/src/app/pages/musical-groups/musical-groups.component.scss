@@ -1,46 +1,43 @@
-@import "./../../../assets/css/helpers/variables";
+@use './../../../assets/css/helpers/variables';
+@use './../../../assets/css/helpers/mixins';
 
-.content {
-  display: grid;
-  justify-content: space-between;
-  width: 100%;
-  grid-template-columns: repeat(auto-fill, 220px);
+.content__buttons {
+  @include mixins.function-buttons;
 }
 
-.title {
-  padding-bottom: 50px;
+.content__header {
+  @include mixins.table-header;
+}
+
+.header__name {
+  flex: 1;
+  margin-left: 80px;
+}
+
+.header__genre {
+  flex: 0.8;
+}
+
+.header__albums {
+  flex: 0.5;
   text-align: center;
-  font-size: 24px;
 }
 
-.group {
-  width: 200px;
-  height: 100px;
-  margin: 10px;
-  background-color: $gray;
-  border: 2px solid $dark-gray;
-  border-radius: 10px;
-  cursor: pointer;
+.header__tracks {
+  flex: 0.5;
+  text-align: center;
 }
 
-.group-add {
-  background-image: url("./../../../assets/image/plus.svg");
-  background-position: center;
-  background-repeat: no-repeat;
+.header__broke-up {
+  flex: 0.5;
+  text-align: center;
 }
 
-.group-edit {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  color: $white;
-  font-size: 18px;
-  font-weight: 600;
+.content__scroll {
+  @include mixins.content-page(250px);
+}
 
-  &__name {
-    font-size: 20px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
+.scroll__row:nth-child(even) {
+  border-radius: 8px;
+  background-color: variables.$primary-2-light;
 }

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { ModalType } from '../enums/modal-type.enum';
-import { MusicalGroup } from '../models/musical-group.model';
+import { ModalType } from '../models/enums/modal-type.enum';
 import { MusicalAlbum } from '../models/musical-album.model';
+import { MusicalConcert } from '../models/musical-concert.model';
 import { MusicalGenre } from '../models/musical-genre.model';
+import { MusicalGroup } from '../models/musical-group.model';
+import { MusicalTrack } from '../models/musical-track.model';
 
 /**
  * Сервис для работы с модальными окнами
@@ -21,11 +23,19 @@ export class ModalStateService {
   /** Выбранный музыкальный жанр */
   public selectedMusicalGenre: MusicalGenre | null = null;
 
+  /** Выбранный музыкальный трек */
+  public selectedMusicalTrack: MusicalTrack | null = null;
+
+  /** Выбранный музыкальный концерт */
+  public selectedMusicalConcert: MusicalConcert | null = null;
+
   /** Список модальных окон и статусов открытия/закрытия */
   public allModalsState = new Map<ModalType, boolean>([
     [ModalType.MusicalGroup, false],
     [ModalType.MusicalAlbum, false],
-    [ModalType.MusicalGenre, false]
+    [ModalType.MusicalGenre, false],
+    [ModalType.MusicalTrack, false],
+    [ModalType.MusicalConcert, false]
   ]);
 
   /**

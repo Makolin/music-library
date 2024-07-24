@@ -1,0 +1,94 @@
+<div class="body">
+  <div class="modal">
+    <div class="modal-container">
+      <app-modal-header
+        [titleModal]="this.titleModal"
+        [modalType]="this.enumModalType.MusicalConcert">
+      </app-modal-header>
+
+      <!--Форма для заполнения-->
+      <form
+          class="form"
+          autocomplete="off"
+          [formGroup]="this.form"
+          (ngSubmit)="this.editMusicalConcert()">
+
+        <!--Наименование исполнителя-->
+        <mat-form-field>
+          <mat-label>Наименование исполнителя</mat-label>
+          <mat-select
+              formControlName="concertGroupId">
+            <mat-option
+                *ngFor="let group of this.dataHandlingService.allMusicalGroups"
+                [value]="group.id">
+              {{group.name}}
+            </mat-option>
+          </mat-select>
+
+          <mat-error *ngIf="this.form.get('concertGroupId')?.errors?.['required']">
+            Обязательное для заполнения поле
+          </mat-error>
+        </mat-form-field>
+
+        <!--Дата проведения-->
+        <mat-form-field>
+          <mat-label>Дата проведения</mat-label>
+          <input
+            matInput
+            formControlName="concertDate"
+            [matDatepicker]="picker">
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker">
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+
+          <mat-error *ngIf="this.form.get('concertDate')?.errors?.['required']">
+            Обязательное для заполнения поле
+          </mat-error>
+        </mat-form-field>
+
+        <!--Выбор места проведения-->
+        <mat-form-field>
+          <mat-label>Место проведения</mat-label>
+          <input
+            matInput
+            formControlName="concertArea">
+
+          <mat-error *ngIf="this.form.get('concertArea')?.errors?.['required']">
+            Обязательное для заполнения поле
+          </mat-error>
+        </mat-form-field>
+
+        <!--Tribute ли группа-->
+        <mat-checkbox
+            formControlName="concertIsTribute">
+          Tribute группа
+        </mat-checkbox>
+
+        <!--Куплен ли билет-->
+        <mat-checkbox
+            formControlName="concertIsBoughtTickets">
+          Билет куплен
+        </mat-checkbox>
+
+        <!--Кнопки-->
+        <div class="form__buttons">
+          <button
+              mat-raised-button
+              class="button"
+              (click)="this.closeWindow()">
+            Отменить
+          </button>
+          <button
+              mat-raised-button
+              class="button"
+              [disabled]="this.form.invalid"
+              (click)="this.editMusicalConcert()">
+            Сохранить
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

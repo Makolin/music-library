@@ -1,0 +1,25 @@
+<div class="group">
+  <div
+    matTooltip="Редактирование"
+    class="group__edit"
+    (click)="this.sendSelectedGroup()">
+  </div>
+
+  <div
+    matTooltip="Удаление"
+    class="group__delete"
+    (click)="this.openDialogDeleteGroup()">
+  </div>
+
+  <div class="group__value-name">{{this.musicalGroup.name}}</div>
+  <div class="group__value-genre-name">{{this.genreName}}</div>
+  <div class="group__value-count-albums">{{this.musicalGroup.albums.length}}</div>
+  <div class="group__value-count-tracks">{{this.musicalGroup | countTracks}}</div>
+  <div class="group__value-broke-up">
+    <mat-checkbox
+      [checked]="this.musicalGroup.isBrokeUp"
+      [color]="'primary'"
+      (change)="this.setStatusBrokeUpGroup(!this.musicalGroup.isBrokeUp)">
+    </mat-checkbox>
+  </div>
+</div>

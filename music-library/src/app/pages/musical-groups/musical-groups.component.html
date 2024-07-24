@@ -1,22 +1,30 @@
-<div class="title">
-  Список групп
-</div>
-
 <div class="content">
-  <!--Добавление новой группы-->
-  <div
-    class="group group-add"
-    (click)="this.openModalEditGroup(null)">
+  <div class="content__buttons">
+    <button
+        mat-flat-button
+        class="button-function"
+        (click)="this.openModalEditGroup(null)">
+      Добавить новую группу
+    </button>
+  </div>
+
+  <div class="content__header">
+    <div class="header__name">Наименование</div>
+    <div class="header__genre">Жанр</div>
+    <div class="header__albums">Альбомов</div>
+    <div class="header__tracks">Треков</div>
+    <div class="header__broke-up">Распалась</div>
   </div>
 
   <!--Вывод текущих групп-->
-  <div *ngFor="let musicalGroup of this.dataHandlingService.allMusicalGroups">
+  <div class="content__scroll">
     <div
-        class="group group-edit"
-        (click)="this.openModalEditGroup(musicalGroup)">
-      <div class="group-edit__name">{{musicalGroup.name}}</div>
-      <div class="group-edit__albums">Альбомы: {{musicalGroup.albums.length}}</div>
-      <div class="group-edit__tracks">Треки: {{musicalGroup | countTracks}}</div>
+        *ngFor="let musicalGroup of this.dataHandlingService.allMusicalGroups"
+        class="scroll__row">
+      <app-groups-row
+        [musicalGroup]="musicalGroup"
+        (selectedGroup)="this.openModalEditGroup($event)">
+      </app-groups-row>
     </div>
   </div>
 </div>

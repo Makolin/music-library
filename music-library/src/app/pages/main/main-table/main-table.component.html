@@ -11,6 +11,8 @@
 
   <!-- Данные для основной таблицы-->
   <div *ngFor="let parameter of mainParameters">
-    <app-table-row [parameter]="parameter"></app-table-row>
+    <app-table-row
+      [parameter]="parameter">
+    </app-table-row>
   </div>
 </div>

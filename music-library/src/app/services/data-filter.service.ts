@@ -43,6 +43,12 @@ export class DataFilterService {
     });
   }
 
+  public sortMusicConcerts(): void {
+    this._dataHandlingService.allMusicalConcert.sort((a, b) => {
+      return a.date > b.date ? -1 : a.date < b.date ? 1 : 0;
+    });
+  }
+
   /**
    * Сортировка по наименованию
    * @param first первый объект
@@ -53,6 +59,6 @@ export class DataFilterService {
     first: MusicalGenre | MusicalGroup | MusicalAlbum,
     second: MusicalGenre | MusicalGroup | MusicalAlbum
   ): number {
-    return (first.name < second.name) ? -1 : (first.name > second.name) ? 1 : 0;
+    return first.name < second.name ? -1 : first.name > second.name ? 1 : 0;
   }
 }

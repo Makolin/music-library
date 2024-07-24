@@ -1,0 +1,48 @@
+@use './../../../../assets/css/helpers/variables';
+@use './../../../../assets/css/helpers/mixins';
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  color: variables.$black;
+  border-radius: 8px;
+  background-color: variables.$primary-2;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.concert {
+  @include mixins.table-row;
+
+  &__value-group-name {
+    flex: 1;
+  }
+
+  &__value-date {
+    flex: 0.7;
+    text-align: center;
+  }
+
+  &__value-area {
+    flex: 0.7;
+  }
+
+  &__value-ticket,
+  &__value-tribute {
+    display: flex;
+    align-items: center;
+    flex: 0.7;
+    justify-content: center;
+    height: 30px;
+  }
+
+  &__edit {
+    @include mixins.button-row('./../../../../assets/image/pen.svg');
+  }
+
+  &__delete {
+    @include mixins.button-row('./../../../../assets/image/trash.svg');
+  }
+}

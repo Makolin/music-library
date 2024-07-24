@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTooltip } from '@angular/material/tooltip';
 
 import { MusicalGenre } from '../../../models/musical-genre.model';
@@ -27,6 +28,7 @@ export class GenresRowComponent implements OnInit {
   public countGroups: number = 0;
 
   public constructor(
+    public dialog: MatDialog,
     private _dataHandlingService: DataHandlingService
   ) { }
 
@@ -47,5 +49,12 @@ export class GenresRowComponent implements OnInit {
    */
   public sendSelectedGenre(): void {
     this.selectedGenre.emit(this.musicalGenre);
+  }
+
+  /**
+   * Открытие диалогово окна подтверждения удаления
+   */
+  public openDialogDeleteGenre(): void {
+    alert('В разработке');
   }
 }

@@ -1,0 +1,117 @@
+@use './variables';
+
+/* Фон для модального окна */
+@mixin modal-body($width) {
+  position: fixed;
+  z-index: 150;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(19, 35, 61, 0.5);
+
+  .modal {
+    position: relative;
+    width: $width;
+    background-color: variables.$primary;
+    border-radius: 8px;
+
+    &-container {
+      margin: 32px 40px;
+    }
+  }
+}
+
+/* Для всех кнопок в модальных окна */
+@mixin button-modal {
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  color: variables.$black;
+  border-color: variables.$primary-3;
+  border-radius: 5%;
+  background: variables.$primary;
+  font-size: 16px;
+
+  &:hover:not(&:disabled) {
+    color: variables.$white;
+    background: variables.$primary-4;
+  }
+
+  &:disabled {
+    cursor: default;
+    color: variables.$primary-3;
+  }
+}
+
+/* Для функциональных кнопок редактирования и создания */
+@mixin function-buttons {
+  display: flex;
+  margin-bottom: 20px;
+  gap: 20px;
+
+  .button-function {
+    height: 40px;
+    color: variables.$black;
+    border: 1px solid variables.$primary-3;
+    background-color: variables.$primary;
+    font-size: 15px;
+
+    &:hover {
+      color: variables.$white;
+      background-color: variables.$primary-4;
+    }
+  }
+}
+
+/* Для строковых кнопок с картинками */
+@mixin button-row($url) {
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  background-color: variables.$primary-3;
+  mask-size: 20px 20px;
+  mask-image: url($url);
+}
+
+/* Для заголовка на страницах */
+@mixin title-page {
+  align-content: center;
+  height: 40px;
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Для наполнения на страницах */
+@mixin content-page($height) {
+  overflow: auto;
+  height: calc(100vh - $height);
+  scrollbar-width: none;
+}
+
+/* Шапка таблицы с данными */
+@mixin table-header {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 1px;
+  border-radius: 8px;
+  background-color: variables.$primary-2;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Строка в таблице с данными */
+@mixin table-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  color: variables.$black;
+  font-size: 16px;
+  font-weight: 500;
+}

@@ -1,0 +1,41 @@
+@use './../../../../assets/css/helpers/variables';
+@use './../../../../assets/css/helpers/mixins';
+
+.group {
+  @include mixins.table-row;
+
+  &__value-number {
+    width: 25px;
+  }
+
+  &__value-name {
+    flex: 1;
+  }
+
+  &__value-genre-name {
+    flex: 0.8;
+  }
+
+  &__value-count-albums {
+    flex: 0.5;
+    text-align: center;
+  }
+
+  &__value-count-tracks {
+    flex: 0.5;
+    text-align: center;
+  }
+
+  &__value-broke-up {
+    flex: 0.5;
+    text-align: center;
+  }
+
+  &__edit {
+    @include mixins.button-row('./../../../../assets/image/pen.svg');
+  }
+
+  &__delete {
+    @include mixins.button-row('./../../../../assets/image/trash.svg');
+  }
+}

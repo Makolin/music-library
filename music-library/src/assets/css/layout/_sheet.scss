@@ -1,0 +1,5 @@
+@use './../helpers/variables';
+
+html {
+	font-family: variables.$font-name;
+}

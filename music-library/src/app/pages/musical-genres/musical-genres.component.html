@@ -1,20 +1,38 @@
-<div class="title">
-  Список жанров
-</div>
-
 <div class="content">
-  <button
-      mat-flat-button
-      class="button-add"
-      (click)="this.openModalEditGenre(null)">
-    Добавить новый жанр
-  </button>
+  <div class="content__buttons">
+    <button
+        mat-flat-button
+        class="button-function"
+        (click)="this.openModalEditGenre(null)">
+      Добавить новый жанр
+    </button>
 
-  <!--Вывод текущих жанров-->
-  <div *ngFor="let musicalGenre of this.dataHandlingService.allMusicalGenres">
-    <app-genres-row
-      [musicalGenre]="musicalGenre"
-      (selectedGenre)="this.openModalEditGenre($event)">
-    </app-genres-row>
+    <a
+        download="musical_genres.json"
+        [href]="this.dataRequestService.downloadJsonHref"
+        (click)="this.downloadGenres()">
+      <button
+        mat-flat-button
+        class="button-function">
+      Скачать новый файл с жанрами
+    </button>
+    </a>
+  </div>
+
+  <div class="content__header">
+    <div class="header__name">Наименование</div>
+    <div class="header__count-group">Количество исполнителей</div>
+  </div>
+
+  <div class="content__scroll">
+    <!--Вывод текущих жанров-->
+    <div
+        *ngFor="let musicalGenre of this.dataHandlingService.allMusicalGenres"
+        class="scroll__row">
+      <app-genres-row
+        [musicalGenre]="musicalGenre"
+        (selectedGenre)="this.openModalEditGenre($event)">
+      </app-genres-row>
+    </div>
   </div>
 </div>

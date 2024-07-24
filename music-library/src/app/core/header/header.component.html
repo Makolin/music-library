@@ -1,6 +1,6 @@
 <div class="main">
   <div class="main__title">
-    Музыкальная библиотека
+    {{'Музыкальная библиотека' | uppercase}}
   </div>
 
   <!--Ссылка для скачивания правок-->
@@ -10,7 +10,8 @@
       matTooltip="Скачать данные"
       [href]="this.dataRequestService.downloadJsonHref"
       (click)="this.createLink()">
-    <div class="download__image"></div>
+    <div class="download">
+      <div class="download__image"></div>
+    </div>
   </a>
  </div>
- 

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { MenuComponent } from './menu/menu.component';
 
 /**
- * Компонент с боковой панелью, который содержит меню и приветствие пользователя
+ * Компонент с боковой панелью, который содержит меню
  */
 @Component({
   selector: 'app-sidebar',

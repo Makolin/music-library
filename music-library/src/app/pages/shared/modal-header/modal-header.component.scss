@@ -1,0 +1,39 @@
+@use './../../../../assets/css/helpers/variables';
+@use './../../../../assets/css//helpers/mixins';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+
+  &__title {
+    letter-spacing: 0.04em;
+    color: variables.$black;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+    &:hover {
+      .header__close-image {
+        background: variables.$black;
+      }
+    }
+
+    &-image {
+      width: 20px;
+      height: 20px;
+      background: variables.$primary-3;
+      mask-size: 20px 20px;
+      mask-image: url('./../../../../assets/image/cross.svg');
+    }
+  }
+}

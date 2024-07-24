@@ -1,21 +1,29 @@
-<div class="title">
-    Список треков
-</div>
-
 <div class="content">
-  <!--Вывод текущих групп-->
-  <div *ngFor="let musicalTrack of this.allMusicalTracks">
-    <div class="track">
-      <div class="track__number">{{musicalTrack.serialNumber}}.</div>
-      <div class="track__name">{{musicalTrack.name}}</div>
-      <div class="track__name-album">{{musicalTrack.albumName}}</div>
-      <div class="track__name-group">{{musicalTrack.groupName}}</div>
-      <mat-checkbox
-        matTooltip="Любимое"
-        [checked]="musicalTrack.isFavorite"
-        [color]="'primary'"
-        (change)="this.setStatusFavoriteTrack(musicalTrack, !musicalTrack.isFavorite)">
-      </mat-checkbox>
+  <div class="content__buttons">
+    <button
+        mat-flat-button
+        class="button-function"
+        (click)="this.openModalEditTrack(null)">
+      Добавить новый трек
+    </button>
+  </div>
+
+  <div class="content__header">
+    <div class="header__name">Наименование</div>
+    <div class="header__album">Альбом</div>
+    <div class="header__group">Группа</div>
+    <div class="header__favorite">В любимом</div>
+  </div>
+
+  <!--Вывод текущих треков-->
+  <div class="content__scroll">
+    <div
+        *ngFor="let musicalTrack of this.dataHandlingService.allMusicalTracks"
+        class="scroll__row">
+      <app-tracks-row
+        [musicalTrack]="musicalTrack"
+        (selectedTrack)="this.openModalEditTrack($event)">
+      </app-tracks-row>
     </div>
   </div>
 </div>

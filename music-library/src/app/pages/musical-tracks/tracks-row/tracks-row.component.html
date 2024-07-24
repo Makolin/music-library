@@ -1,0 +1,26 @@
+<div
+    class="track"
+    [class.track_not-favorite]="!this.musicalTrack.isFavorite">
+  <div
+    matTooltip="Редактирование"
+    class="track__edit"
+    (click)="this.sendSelectedTrack()">
+  </div>
+
+  <div
+    matTooltip="Удаление"
+    class="track__delete"
+    (click)="this.openDialogDeleteTrack()">
+  </div>
+
+  <div class="track__value-name">{{this.musicalTrack.name}}</div>
+  <div class="track__value-name-album">{{this.musicalTrack.albumName}}</div>
+  <div class="track__value-name-group">{{this.musicalTrack.groupName}}</div>
+  <div class="track__value-favorite">
+    <mat-checkbox
+      [checked]="musicalTrack.isFavorite"
+      [color]="'primary'"
+      (change)="this.setStatusFavoriteTrack(this.musicalTrack, !this.musicalTrack.isFavorite)">
+    </mat-checkbox>
+  </div>
+</div>

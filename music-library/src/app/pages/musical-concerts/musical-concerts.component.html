@@ -1,3 +1,42 @@
-<p>
-  musical-concerts works!
-</p>
+<div class="content">
+  <div class="content__buttons">
+    <button
+        mat-flat-button
+        class="button-function"
+        (click)="this.openModalEditConcert(null)">
+      Добавить новый концерт
+    </button>
+
+    <a
+        download="musical_concerts.json"
+        [href]="this.dataRequestService.downloadJsonHref"
+        (click)="this.downloadConcerts()">
+      <button
+        mat-flat-button
+        class="button-function">
+      Скачать новый файл с концертами
+    </button>
+    </a>
+  </div>
+
+  <div class="content__header">
+    <div class="header__name">Наименование группы</div>
+    <div class="header__tribute">Tribute</div>
+    <div class="header__date">Дата</div>
+    <div class="header__area">Площадка</div>
+    <div class="header__ticket">Наличие билета</div>
+  </div>
+
+  <!--Вывод текущих концертов-->
+  <div class="content__scroll">
+    <div
+        *ngFor="let musicalConcert of this.dataHandlingService.allMusicalConcert"
+        class="scroll__row">
+      <app-concerts-row
+        [musicalConcert]="musicalConcert"
+        [isShowInfo]="this.isLastPastConcert === musicalConcert.id"
+        (selectedConcert)="this.openModalEditConcert($event)">
+      </app-concerts-row>
+    </div>
+  </div>
+</div>

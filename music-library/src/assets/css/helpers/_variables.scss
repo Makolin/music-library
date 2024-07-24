@@ -1,8 +1,14 @@
 /* Основной используемый в приложении шрифт */
-$font-name: 'PT Serif';
+$font-name: 'Roboto Stab';
 
 /* Основные цвета */
-$gray: hsl(0, 1%, 40%);
-$dark-gray: hsl(0, 1%, 17%);
-$light-gray: hsl(0, 1%, 70%);
+$primary: hsl(47, 25%, 89%);
+$primary-2: hsl(35, 40%, 75%);
+$primary-2-light: hsla(35, 40%, 75%, 0.5);
+$primary-3: hsl(45, 2%, 55%);
+$primary-4: hsl(6, 73%, 68%);
+$primary-5: hsl(4, 77%, 61%);
+
+/* Дополнительные цвета */
 $white: hsl(0, 1%, 100%);
+$black: hsl(0, 0%, 0%);

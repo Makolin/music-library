@@ -2,8 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
-import { DataHandlingService } from './data-handling.service';
+import { MusicalConcert } from '../models/musical-concert.model';
+import { MusicalGenre } from '../models/musical-genre.model';
+import { MusicalGroup } from '../models/musical-group.model';
 import { DataFilterService } from './data-filter.service';
+import { DataHandlingService } from './data-handling.service';
 
 /**
  * Сервис для выполнения запросов
@@ -24,11 +27,17 @@ export class DataRequestService {
   /** Загрузка музыкальных жанров */
   private _isLoadMusicalGenres: boolean = false;
 
+  /** Загрузка концертов музыкальных групп */
+  private _isLoadMusicalConcerts: boolean = false;
+
   /** Ссылка для чтения музыкальных групп */
   private readonly URL_MUSICAL_GROUPS: string = 'assets/musical_groups.json';
 
   /** Ссылка для чтения жанров музыкальных групп */
   private readonly URL_MUSICAL_GENRES: string = 'assets/musical_genres.json';
+
+  /** Ссылка для чтения концертов музыкальных групп */
+  private readonly URL_MUSICAL_CONCERTS: string = 'assets/musical_concerts.json';
 
   public constructor(
     private _httpClient: HttpClient,
@@ -38,6 +47,7 @@ export class DataRequestService {
   ) {
     this.readDataMusicalGroups();
     this.readDataMusicalGenres();
+    this.readDataMusicalConcerts();
   }
 
   /**
@@ -53,6 +63,8 @@ export class DataRequestService {
       },
       complete: () => {
         this._dataFilterService.sortMusicGroups();
+        this._dataHandlingService.setAllAlbums(this._dataFilterService);
+        this._dataHandlingService.setAllTracks();
         this._isLoadMusicalGroups = true;
         this.checkAllLoad();
       }
@@ -79,17 +91,65 @@ export class DataRequestService {
   }
 
   /**
-   * Создание ссылки для скачивания файла
+   * Чтение данных из файла JSON концертов
    */
-  public createLinkForDownload(): void {
-    const convertData = JSON.stringify(this._dataHandlingService.allMusicalGroups);
+  public readDataMusicalConcerts(): void {
+    this._httpClient.get(this.URL_MUSICAL_CONCERTS).subscribe({
+      next: (data: any) => {
+        this._dataHandlingService.setAllMusicConcerts(data);
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+      complete: () => {
+        this._dataFilterService.sortMusicConcerts();
+        this._isLoadMusicalConcerts = true;
+        this.checkAllLoad();
+      }
+    });
+  }
+
+  /**
+   * Создание ссылки для скачивания файла
+   * @param data данные для скачивания
+   */
+  public createLinkForDownload(data: MusicalGroup[] | MusicalGenre[] | MusicalConcert[]): void {
+    this.removeExcessData(data);
+
+    const convertData = JSON.stringify(data);
     this.downloadJsonHref = this._sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(convertData));
+  }
+
+  /**
+   * Удаление лишних данных
+   * @param data исходные данные
+   */
+  private removeExcessData(data: MusicalGroup[] | MusicalGenre[] | MusicalConcert[]): void {
+    data.forEach(element => {
+      if (element instanceof MusicalGroup) {
+        delete element.countAlbums;
+        delete element.countTracks;
+
+        element.albums.forEach(album => {
+          delete album.groupName;
+
+          album.tracks.forEach(track => {
+            delete track.albumName;
+            delete track.groupName;
+          });
+        });
+      }
+
+      if (element instanceof MusicalConcert) {
+        delete element.groupName;
+      }
+    });
   }
 
   /**
    * Проверка загрузки всех данных
    */
   private checkAllLoad(): void {
-    this.isLoadAllData = this._isLoadMusicalGenres && this._isLoadMusicalGroups;
+    this.isLoadAllData = this._isLoadMusicalGenres && this._isLoadMusicalGroups && this._isLoadMusicalConcerts;
   }
 }

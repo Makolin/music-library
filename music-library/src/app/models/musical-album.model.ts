@@ -5,10 +5,10 @@ import { MusicalTrack } from './musical-track.model';
  */
 export class MusicalAlbum {
   /** Наименование группы */
-  public groupName: string = '';
+  public groupName?: string = '';
 
   /**
-   * Конструктор создания альбома
+   * Конструктор
    * @param id идентификатор
    * @param groupId идентификатор группы
    * @param name наименование

@@ -7,9 +7,14 @@
 
   <div
     matTooltip="Удаление"
-    class="genre__delete">
+    class="genre__delete"
+    (click)="this.openDialogDeleteGenre()">
   </div>
 
-  <div class="genre__name">{{this.musicalGenre.name}}</div>
-  <div class="genre__count-group">{{this.countGroups}} исполнителей</div>
+  <div class="genre__name">
+    {{this.musicalGenre.name}}
+  </div>
+  <div class="genre__count-group">
+    {{this.countGroups}} исполнителей
+  </div>
 </div>

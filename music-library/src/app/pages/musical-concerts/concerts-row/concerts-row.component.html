@@ -1,0 +1,39 @@
+<!--Строка с информацией-->
+<div
+    *ngIf="this.isShowInfo"
+    class="info">
+  Прошедшие
+</div>
+
+<!--Строка с концертом-->
+<div class="concert">
+  <div
+    matTooltip="Редактирование"
+    class="concert__edit"
+    (click)="this.sendSelectedConcert()">
+  </div>
+
+  <div
+    matTooltip="Удаление"
+    class="concert__delete"
+    (click)="this.openDialogDeleteGenre()">
+  </div>
+
+  <div class="concert__value-group-name">{{this.musicalConcert.groupName}}</div>
+  <div class="concert__value-tribute">
+    <mat-checkbox
+      [checked]="this.musicalConcert.isTribute"
+      [color]="'primary'"
+      (change)="this.setStatusTribute(!this.musicalConcert.isTribute)">
+    </mat-checkbox>
+  </div>
+  <div class="concert__value-date">{{this.musicalConcert.date | date}}</div>
+  <div class="concert__value-area">{{this.musicalConcert.area}}</div>
+  <div class="concert__value-ticket">
+    <mat-checkbox
+      [checked]="this.musicalConcert.isBoughtTickets"
+      [color]="'primary'"
+      (change)="this.setStatusBoughtTicket(!this.musicalConcert.isBoughtTickets)">
+    </mat-checkbox>
+  </div>
+</div>
